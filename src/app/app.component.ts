@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {DrawerService} from 'drawer-layout';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'drawer-layout-app';
+  constructor(public drawer: DrawerService) {
+  }
+
+  onDisable() {
+    this.drawer.disable();
+  }
 }

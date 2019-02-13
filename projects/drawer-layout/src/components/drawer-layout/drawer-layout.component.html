@@ -1,0 +1,11 @@
+<ng-content select=".header"></ng-content>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="isOpened$ | async">
+    <ng-content select=".drawer-content"></ng-content>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <ng-content select=".content"></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "drawer-layout": [
+        "dist/drawer-layout"
+      ],
+      "drawer-layout/*": [
+        "dist/drawer-layout/*"
+      ]
+    }
   }
 }

@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatSidenavModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { DrawerLayoutComponent } from './drawer-layout.component';
+import {DrawerLayoutComponent} from './drawer-layout.component';
 
 describe('DrawerLayoutComponent', () => {
   let component: DrawerLayoutComponent;
@@ -8,9 +10,12 @@ describe('DrawerLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DrawerLayoutComponent ]
-    })
-    .compileComponents();
+      imports: [
+        BrowserAnimationsModule,
+        MatSidenavModule,
+      ],
+      declarations: [DrawerLayoutComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

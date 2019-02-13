@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 
-import { DrawerToggleButtonComponent } from './drawer-toggle-button.component';
+import {DrawerToggleButtonComponent} from './drawer-toggle-button.component';
 
 describe('DrawerToggleButtonComponent', () => {
   let component: DrawerToggleButtonComponent;
@@ -8,9 +9,13 @@ describe('DrawerToggleButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DrawerToggleButtonComponent ]
+      imports: [
+        MatButtonModule,
+        MatIconModule,
+      ],
+      declarations: [DrawerToggleButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

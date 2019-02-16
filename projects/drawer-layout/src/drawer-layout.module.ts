@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatButtonModule, MatIconModule, MatSidenavModule} from '@angular/material';
 
 import {DrawerLayoutComponent} from './components/drawer-layout/drawer-layout.component';
-import {DrawerNavItemComponent} from './components/drawer-nav-item/drawer-nav-item.component';
+// import {DrawerNavItemComponent} from './components/drawer-nav-item/drawer-nav-item.component';
 import {DrawerToggleButtonComponent} from './components/drawer-toggle-button/drawer-toggle-button.component';
 import {DrawerToggleDirective} from './directives/drawer-toggle.directive';
 import {DrawerService} from './services/drawer.service';
@@ -11,7 +11,7 @@ import {DrawerService} from './services/drawer.service';
 @NgModule({
   declarations: [
     DrawerLayoutComponent,
-    DrawerNavItemComponent,
+    // DrawerNavItemComponent,
     DrawerToggleButtonComponent,
     DrawerToggleDirective
   ],
@@ -23,7 +23,7 @@ import {DrawerService} from './services/drawer.service';
   ],
   exports: [
     DrawerLayoutComponent,
-    DrawerNavItemComponent,
+    // DrawerNavItemComponent,
     DrawerToggleButtonComponent,
     DrawerToggleDirective,
   ]

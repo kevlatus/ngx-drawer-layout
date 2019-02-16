@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DrawerItemComponent} from './drawer-item.component';
+import {MatIconModule} from '@angular/material';
 
 describe('DrawerItemComponent', () => {
   let component: DrawerItemComponent;
@@ -8,6 +9,9 @@ describe('DrawerItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatIconModule,
+      ],
       declarations: [DrawerItemComponent]
     })
       .compileComponents();

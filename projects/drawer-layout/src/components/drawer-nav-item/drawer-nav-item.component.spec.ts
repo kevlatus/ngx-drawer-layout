@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {DrawerLinkComponent} from './drawer-link.component';
+import {DrawerNavItemComponent} from './drawer-nav-item.component';
 
-describe('DrawerLinkComponent', () => {
-  let component: DrawerLinkComponent;
-  let fixture: ComponentFixture<DrawerLinkComponent>;
+describe('DrawerNavItemComponent', () => {
+  let component: DrawerNavItemComponent;
+  let fixture: ComponentFixture<DrawerNavItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DrawerLinkComponent]
+      declarations: [DrawerNavItemComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DrawerLinkComponent);
+    fixture = TestBed.createComponent(DrawerNavItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

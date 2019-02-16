@@ -4,13 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod drawer-layout",
     "test": "ng test drawer-layout",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "lib:watch": "ng build drawer-layout --watch",
-    "lib:build": "ng build drawer-layout && node scripts/copy.js",
-    "lib:publish": "node scripts/publish.js"
+    "lint": "ng lint drawer-layout",
+    "e2e": "ng e2e drawer-layout",
+    "publish": "npm run build && node scripts/publish.js",
+    "watch": "ng build --watch drawer-layout"
   },
   "private": true,
   "dependencies": {

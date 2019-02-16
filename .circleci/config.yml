@@ -17,6 +17,7 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
+      - run: npm run lint
       - run: npm run test -- --no-watch --no-progress
 
       - save_cache:
@@ -27,7 +28,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  deploy:
+  publish:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -36,21 +37,18 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
-          name: Build package
-          command: npm run lib:build
-      - run:
           name: Publish package
-          command: npm run lib:publish
+          command: npm run publish
 
 workflows:
   version: 2
-  test-deploy:
+  test-publish:
     jobs:
       - test:
           filters:
             tags:
               only: /^v.*/
-      - deploy:
+      - publish:
           requires:
             - test
           filters:

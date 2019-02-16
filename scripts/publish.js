@@ -1,14 +1,18 @@
-const path = require('path');
 const fs = require('fs');
-const os = require('os');
+const path = require('path');
 const exec = require('child_process').exec;
+const {LIB_DIST_FOLDER, LIB_SOURCE_FOLDER, LIB_PUBLIC_NAME, LIB_VERSION, ROOT_PATH} = require('./utils');
 
-const LIB_PACKAGE_CONFIG = require('../dist/drawer-layout/package');
-const LIB_PACKAGE_NAME = `ngx-drawer-layout-${LIB_PACKAGE_CONFIG.version}.tgz`;
+const LIB_PACKAGE_NAME = `${LIB_PUBLIC_NAME}-${LIB_VERSION}.tgz`;
+const LICENSE_PATH = path.resolve(ROOT_PATH, 'LICENSE');
+const README_PATH = path.resolve(ROOT_PATH, 'README.md');
+
+fs.copyFileSync(LICENSE_PATH, path.resolve(LIB_SOURCE_FOLDER, 'LICENSE'));
+fs.copyFileSync(README_PATH, path.resolve(LIB_SOURCE_FOLDER, 'README.md'));
 
 exec(
   `npm pack`,
-  {cwd: path.resolve(__dirname, '../dist/drawer-layout')},
+  {cwd: LIB_DIST_FOLDER},
   function (err, stdout) {
     if (err) throw err;
     else {
@@ -16,7 +20,7 @@ exec(
 
       exec(
         `npm publish ${LIB_PACKAGE_NAME}`,
-        {cwd: path.resolve(__dirname, '../dist/drawer-layout')},
+        {cwd: LIB_DIST_FOLDER},
         function (err, stdout) {
           if (err) throw err;
           else console.log(stdout);

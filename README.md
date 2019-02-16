@@ -1,6 +1,4 @@
-<a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">
-  ![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)
-</a>
+<a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)</a>
 ![](https://img.shields.io/circleci/project/github/latusinski/ngx-drawer-layout/master.svg)
 
 # NGX Drawer Layout

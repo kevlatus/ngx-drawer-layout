@@ -4,7 +4,7 @@
 
 export * from './drawer-layout.module';
 export * from './components/drawer-layout/drawer-layout.component';
-// export * from './components/drawer-nav-item/drawer-nav-item.component';
+export * from './components/drawer-item/drawer-item.component';
 export * from './components/drawer-toggle-button/drawer-toggle-button.component';
 export * from './directives/drawer-toggle.directive';
 export * from './services/drawer.service';

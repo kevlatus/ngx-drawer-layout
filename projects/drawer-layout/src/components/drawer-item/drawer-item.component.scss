@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 0 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+mat-icon {
+  color: rgb(96, 96, 96);
+  margin-right: 16px;
+}
+
+.text {
+  flex: 1 1 auto;
+  line-height: 24px;
+}
+
+.active .text {
+  color: red;
+}

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod drawer-layout",
+    "build": "ng build drawer-layout",
     "test": "ng test drawer-layout",
     "lint": "ng lint drawer-layout",
     "e2e": "ng e2e drawer-layout",

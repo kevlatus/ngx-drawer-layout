@@ -1,27 +1,67 @@
-# DrawerLayoutApp
+<a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">
+  ![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)
+</a>
+![](https://img.shields.io/circleci/project/github/latusinski/ngx-drawer-layout/master.svg)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+# NGX Drawer Layout
 
-## Development server
+This project is a library for [Angular](https://angular.io/). It provides components, which
+ support implementing an app layout using a
+ [Material Design drawer](https://material.io/design/components/navigation-drawer.html).
+ It relies on the [Angular Material Library](https://material.angular.io/).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installing
 
-## Code scaffolding
+Make sure to add Angular Material to your project. When using Angular CLI, you can run:
+```
+ng add @angular/material
+```
+For alternative installation refer to the [quick start guide](https://material.angular.io/guide/getting-started).  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Using npm, you can install the library with:  
+```
+npm install --save ngx-drawer-layout
+```
 
-## Build
+Using yarn, you can install the library with:  
+```
+yarn add ngx-drawer-layout
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+**1. Import the DrawerLayoutModule**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```javascript
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {DrawerLayoutModule} from 'ngx-drawer-layout';
 
-## Running end-to-end tests
+@NgModule({
+    imports: [
+        BrowserModule,
+        DrawerLayoutModule.forRoot()
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**2. Use the DrawerLayoutComponent**
 
-## Further help
+```html
+<ngx-drawer-layout>
+  <mat-toolbar class="ngx-drawer-layout-header">
+    <ngx-drawer-toggle-button></ngx-drawer-toggle-button>
+    <div>NGX Drawer Layout Demo</div>
+  </mat-toolbar>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  <div class="ngx-drawer-content">
+    <div>Drawer Content</div>
+  </div>
+
+  <div class="ngx-drawer-layout-content">
+    <div>App Content</div>
+  </div>
+</ngx-drawer-layout>
+```

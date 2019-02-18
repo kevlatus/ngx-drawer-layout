@@ -23,6 +23,9 @@ export class DrawerToggleButtonComponent {
    */
   @Input() public icon = 'menu';
 
+  /**
+   * An observable, which fires, when the drawer is en-/disabled
+   */
   isEnabled$: Observable<boolean>;
 
   constructor(drawer: DrawerService) {

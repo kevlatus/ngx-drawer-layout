@@ -35,6 +35,10 @@ export class DrawerItemComponent {
     return this.activeValue !== false;
   }
 
+  /**
+   * Setter for the "active" class of this drawer item.
+   * @param v Use true, if the class "active" should be set.
+   */
   public set active(v: boolean) {
     this.activeValue = v;
   }

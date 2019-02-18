@@ -1,7 +1,8 @@
 <ng-content select=".ngx-drawer-layout-header"></ng-content>
 
-<mat-drawer-container>
-  <mat-drawer mode="side" [opened]="isOpened$ | async">
+<mat-drawer-container [hasBackdrop]="hasBackdrop" [autosize]="autosize" (backdropClick)="onBackdropClick()">
+  <mat-drawer mode="side" [opened]="isOpened$ | async"
+              [position]="drawerPosition" [autoFocus]="drawerAutoFocus">
     <ng-content select=".ngx-drawer-content"></ng-content>
   </mat-drawer>
 

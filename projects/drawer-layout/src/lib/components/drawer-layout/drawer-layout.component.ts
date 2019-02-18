@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {DrawerService} from '../../services/drawer.service';
@@ -16,9 +16,38 @@ import {DrawerService} from '../../services/drawer.service';
   styleUrls: ['./drawer-layout.component.scss']
 })
 export class DrawerLayoutComponent {
+  /**
+   * {@link MatDrawerContainer.autosize}
+   */
+  @Input() public autosize: boolean;
+
+  /**
+   * {@link MatDrawer.autoFocus}
+   */
+  @Input() public drawerAutoFocus: boolean;
+
+  /**
+   * {@link MatDrawer.position}
+   */
+  @Input() public drawerPosition: 'start' | 'end';
+
+  /**
+   * {@link MatDrawerContainer.hasBackdrop}
+   */
+  @Input() public hasBackdrop: boolean;
+
+  /**
+   * {@link MatDrawerContainer.backdropClick}
+   */
+  @Output() public backdropClicked = new EventEmitter<void>();
+
   isOpened$: Observable<boolean>;
 
   constructor(drawer: DrawerService) {
     this.isOpened$ = drawer.isOpened$;
+  }
+
+  onBackdropClick() {
+    this.backdropClicked.emit();
   }
 }

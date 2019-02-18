@@ -1,8 +1,10 @@
+@import '../../variables';
+
 ngx-drawer-item {
   margin: 4px 8px;
 }
 
 h3 {
   margin: 8px;
-  color: rgb(96, 96, 96);
+  color: $darker-grey;
 }

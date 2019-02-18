@@ -1,3 +1,5 @@
+@import '../../variables';
+
 :host {
   display: flex;
   justify-content: center;
@@ -15,7 +17,7 @@
 }
 
 mat-icon {
-  color: rgb(96, 96, 96);
+  color: $darker-grey;
   margin-right: 16px;
 }
 

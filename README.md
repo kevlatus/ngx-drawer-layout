@@ -44,7 +44,7 @@ $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
-@include ngx-drawer-layout-theme($theme);
+@include ngx-drawer-layout-theme($theme); // <--- include the drawer layout theme
 ``` 
 
 ## Usage

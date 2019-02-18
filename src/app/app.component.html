@@ -1,15 +1,18 @@
 <ngx-drawer-layout>
-  <mat-toolbar class="header" color="primary">
+  <mat-toolbar class="ngx-drawer-layout-header" color="primary">
     <ngx-drawer-toggle-button></ngx-drawer-toggle-button>
     <div>NGX Drawer Layout Demo</div>
   </mat-toolbar>
 
-  <div class="drawer-content">
-    <div>Content</div>
-    <button>Yo</button>
+  <div class="ngx-drawer-content">
+    <ngx-drawer-item icon="home" text="Home"
+                     routerLink="/" routerLinkActive="active"
+                     [routerLinkActiveOptions]="{exact: true}"></ngx-drawer-item>
+    <ngx-drawer-item icon="add" text="Test" routerLink="/test" routerLinkActive="active"></ngx-drawer-item>
   </div>
 
-  <div class="content">
+  <div class="ngx-drawer-layout-content">
     <button (click)="onDisable()">Disable Drawer</button>
+    <router-outlet></router-outlet>
   </div>
 </ngx-drawer-layout>

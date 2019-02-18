@@ -21,6 +21,10 @@ mat-icon {
   margin-right: 16px;
 }
 
+.icon-placeholder {
+  margin-right: calc(24px + 16px);
+}
+
 .text {
   flex: 1 1 auto;
   line-height: 24px;

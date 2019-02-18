@@ -9,7 +9,7 @@ import {DrawerNavItem, DrawerService} from 'drawer-layout';
 export class AppComponent {
   items: DrawerNavItem[] = [
     {icon: 'home', text: 'Home', exact: true, href: '/'},
-    {icon: 'add', text: 'Test', href: '/test'}
+    {text: 'Test', href: '/test'}
   ];
 
   constructor(public drawer: DrawerService) {

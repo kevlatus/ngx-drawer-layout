@@ -1,4 +1,4 @@
-.container {
+:host {
   display: flex;
   justify-content: center;
   margin: 0 8px;
@@ -7,12 +7,12 @@
   cursor: pointer;
 }
 
-.container:hover {
+:host(:hover) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.container.active {
-  background: lighten(var(--primary-color), 70%);
+:host(:focus) {
+  outline: none;
 }
 
 mat-icon {
@@ -23,8 +23,4 @@ mat-icon {
 .text {
   flex: 1 1 auto;
   line-height: 24px;
-}
-
-.active .text {
-  color: var(--primary-color);
 }

@@ -29,7 +29,7 @@ yarn add ngx-drawer-layout
 ### Enabling Material theming 
 
 If you want to benefit from Material theming, you need to use Angular Material
- with [a custom theme](https://material.angular.io/guide/theming#defining-a-custom-theme.
+ with [a custom theme](https://material.angular.io/guide/theming#defining-a-custom-theme).
  Then, you can add theming to the drawer layout like this:
  
 ```scss

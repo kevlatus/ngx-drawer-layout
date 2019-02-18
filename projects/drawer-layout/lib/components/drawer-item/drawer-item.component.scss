@@ -11,6 +11,10 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
+.container.active {
+  background: lighten(var(--primary-color), 70%);
+}
+
 mat-icon {
   color: rgb(96, 96, 96);
   margin-right: 16px;
@@ -22,5 +26,5 @@ mat-icon {
 }
 
 .active .text {
-  color: red;
+  color: var(--primary-color);
 }

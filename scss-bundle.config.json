@@ -1,0 +1,4 @@
+{
+  "entry": "./projects/drawer-layout/src/lib/_theming.scss",
+  "dest": "dist/drawer-layout/_theming.scss"
+}

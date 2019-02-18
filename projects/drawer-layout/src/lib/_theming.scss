@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin ngx-drawer-layout-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  ngx-drawer-item.active {
+    background: rgba(mat-color($primary), 0.2);
+    color: mat-color($primary);
+  }
+
+  ngx-drawer-item.active:hover {
+    background: rgba(mat-color($primary), 0.3);
+  }
+
+  ngx-drawer-item.active mat-icon {
+    color: mat-color($primary);
+  }
+}

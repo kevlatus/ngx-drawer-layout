@@ -5,10 +5,7 @@
   </mat-toolbar>
 
   <div class="ngx-drawer-content">
-    <ngx-drawer-item icon="home" text="Home"
-                     routerLink="/" routerLinkActive="active"
-                     [routerLinkActiveOptions]="{exact: true}"></ngx-drawer-item>
-    <ngx-drawer-item icon="add" text="Test" routerLink="/test" routerLinkActive="active"></ngx-drawer-item>
+    <ngx-drawer-nav-list heading="Navigation" [items]="items"></ngx-drawer-nav-list>
   </div>
 
   <div class="ngx-drawer-layout-content">

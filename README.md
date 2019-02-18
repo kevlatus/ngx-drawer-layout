@@ -26,6 +26,27 @@ Using yarn, you can install the library with:
 yarn add ngx-drawer-layout
 ```
 
+### Enabling Material theming 
+
+If you want to benefit from Material theming, you need to use Angular Material
+ with [a custom theme](https://material.angular.io/guide/theming#defining-a-custom-theme.
+ Then, you can add theming to the drawer layout like this:
+ 
+```scss
+@import '~@angular/material/theming';
+@import '~ngx-drawer-layout/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+@include ngx-drawer-layout-theme($theme);
+``` 
+
 ## Usage
 
 **1. Import the DrawerLayoutModule**

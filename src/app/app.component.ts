@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {DrawerService} from 'drawer-layout';
+import {DrawerNavItem, DrawerService} from 'drawer-layout';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,11 @@ import {DrawerService} from 'drawer-layout';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  items: DrawerNavItem[] = [
+    {icon: 'home', text: 'Home', exact: true, href: '/'},
+    {icon: 'add', text: 'Test', href: '/test'}
+  ];
+
   constructor(public drawer: DrawerService) {
   }
 

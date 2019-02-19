@@ -54,7 +54,7 @@ import {DrawerLayoutModule} from 'ngx-drawer-layout';
 @NgModule({
     imports: [
         BrowserModule,
-        DrawerLayoutModule.forRoot() <-- import module
+        DrawerLayoutModule.forRoot() // <-- import module
     ],
     bootstrap: [AppComponent]
 })

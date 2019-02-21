@@ -10,7 +10,7 @@ This project is a library for [Angular](https://angular.io/). It provides compon
 
 ## Installing
 
-Make sure to add Angular Material to your project. When using Angular CLI, you can run:
+Before installing, make sure to add Angular Material to your project. When using Angular CLI, you can run:
 ```
 ng add @angular/material
 ```
@@ -21,11 +21,6 @@ Using npm, you can install the library with:
 npm install --save ngx-drawer-layout
 ```
 
-Using yarn, you can install the library with:  
-```
-yarn add ngx-drawer-layout
-```
-
 ### Enabling Material theming 
 
 If you want to benefit from Material theming, you need to use Angular Material
@@ -34,7 +29,7 @@ If you want to benefit from Material theming, you need to use Angular Material
  
 ```scss
 @import '~@angular/material/theming';
-@import '~ngx-drawer-layout/theming';
+@import '~ngx-drawer-layout/theming'; // <-- include SASS lib file
 
 @include mat-core();
 
@@ -44,7 +39,7 @@ $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
-@include ngx-drawer-layout-theme($theme); // <--- include the drawer layout theme
+@include ngx-drawer-layout-theme($theme); // <-- include the drawer layout theme
 ``` 
 
 ## Usage
@@ -59,7 +54,7 @@ import {DrawerLayoutModule} from 'ngx-drawer-layout';
 @NgModule({
     imports: [
         BrowserModule,
-        DrawerLayoutModule.forRoot()
+        DrawerLayoutModule.forRoot() // <-- import module
     ],
     bootstrap: [AppComponent]
 })

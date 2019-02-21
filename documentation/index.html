@@ -1,0 +1,154 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>NGX Drawer Layout Docs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">NGX Drawer Layout Docs</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p><a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout"><img src="https://img.shields.io/npm/v/ngx-drawer-layout.svg" alt="" class="img-responsive"></a>
+<img src="https://img.shields.io/circleci/project/github/latusinski/ngx-drawer-layout/master.svg" alt="" class="img-responsive"></p>
+<h1 id="ngx-drawer-layout">NGX Drawer Layout</h1>
+<p>This project is a library for <a href="https://angular.io/">Angular</a>. It provides components, which
+ support implementing an app layout using a
+ <a href="https://material.io/design/components/navigation-drawer.html">Material Design drawer</a>.
+ It relies on the <a href="https://material.angular.io/">Angular Material Library</a>.</p>
+<h2 id="installing">Installing</h2>
+<p>Make sure to add Angular Material to your project. When using Angular CLI, you can run:</p>
+<div><pre class="line-numbers"><code class="language-none">ng add &#64;angular/material</code></pre></div><p>For alternative installation refer to the <a href="https://material.angular.io/guide/getting-started">quick start guide</a>.  </p>
+<p>Using npm, you can install the library with:  </p>
+<div><pre class="line-numbers"><code class="language-none">npm install --save ngx-drawer-layout</code></pre></div><p>Using yarn, you can install the library with:  </p>
+<div><pre class="line-numbers"><code class="language-none">yarn add ngx-drawer-layout</code></pre></div><h3 id="enabling-material-theming">Enabling Material theming</h3>
+<p>If you want to benefit from Material theming, you need to use Angular Material
+ with [a custom theme](<a href="https://material.angular.io/guide/theming#defining-a-custom-theme">https://material.angular.io/guide/theming#defining-a-custom-theme</a>.
+ Then, you can add theming to the drawer layout like this:</p>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;angular/material/theming&#39;;
+&#64;import &#39;~ngx-drawer-layout/theming&#39;;
+
+&#64;include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+&#64;include angular-material-theme($theme);
+&#64;include ngx-drawer-layout-theme($theme);</code></pre></div><h2 id="usage">Usage</h2>
+<p><strong>1. Import the DrawerLayoutModule</strong></p>
+<div><pre class="line-numbers"><code class="language-javascript">import {BrowserModule} from &#39;&#64;angular/platform-browser&#39;;
+import {NgModule} from &#39;&#64;angular/core&#39;;
+import {DrawerLayoutModule} from &#39;ngx-drawer-layout&#39;;
+
+&#64;NgModule({
+    imports: [
+        BrowserModule,
+        DrawerLayoutModule.forRoot()
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre></div><p><strong>2. Use the DrawerLayoutComponent</strong></p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ngx-drawer-layout&gt;
+  &lt;mat-toolbar class=&quot;ngx-drawer-layout-header&quot;&gt;
+    &lt;ngx-drawer-toggle-button&gt;&lt;/ngx-drawer-toggle-button&gt;
+    &lt;div&gt;NGX Drawer Layout Demo&lt;/div&gt;
+  &lt;/mat-toolbar&gt;
+
+  &lt;div class=&quot;ngx-drawer-content&quot;&gt;
+    &lt;div&gt;Drawer Content&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;ngx-drawer-layout-content&quot;&gt;
+    &lt;div&gt;App Content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ngx-drawer-layout&gt;</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

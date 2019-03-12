@@ -74,7 +74,7 @@ export class AppModule { }
     <div>Drawer Content</div>
   </div>
 
-  <div ngxDrawerAppContent">
+  <div ngxDrawerAppContent>
     <div>App Content</div>
   </div>
 </ngx-drawer-layout>

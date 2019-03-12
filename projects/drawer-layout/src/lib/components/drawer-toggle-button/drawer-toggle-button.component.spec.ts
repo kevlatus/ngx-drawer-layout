@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 
 import {DrawerToggleButtonComponent} from './drawer-toggle-button.component';
+import {DEFAULT_CONFIG, initialDisabled, initialOpen} from '../../config';
 
 describe('DrawerToggleButtonComponent', () => {
   let component: DrawerToggleButtonComponent;
@@ -12,6 +13,10 @@ describe('DrawerToggleButtonComponent', () => {
       imports: [
         MatButtonModule,
         MatIconModule,
+      ],
+      providers: [
+        {provide: initialDisabled, useValue: DEFAULT_CONFIG.initialDisabled},
+        {provide: initialOpen, useValue: DEFAULT_CONFIG.initialOpen},
       ],
       declarations: [DrawerToggleButtonComponent]
     })

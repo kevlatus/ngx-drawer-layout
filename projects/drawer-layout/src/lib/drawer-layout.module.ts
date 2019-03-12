@@ -3,12 +3,16 @@ import {CommonModule} from '@angular/common';
 import {MatButtonModule, MatIconModule, MatSidenavModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
+import {DEFAULT_CONFIG, DrawerLayoutConfig, initialDisabled, initialOpen} from './config';
 import {DrawerLayoutComponent} from './components/drawer-layout/drawer-layout.component';
 import {DrawerItemComponent} from './components/drawer-item/drawer-item.component';
 import {DrawerNavListComponent} from './components/drawer-nav-list/drawer-nav-list.component';
 import {DrawerToggleButtonComponent} from './components/drawer-toggle-button/drawer-toggle-button.component';
 import {DrawerToggleDirective} from './directives/drawer-toggle.directive';
 import {DrawerService} from './services/drawer.service';
+import {DrawerContentDirective} from './directives/drawer-content.directive';
+import {DrawerAppContentDirective} from './directives/drawer-app-content.directive';
+import {DrawerAppHeaderDirective} from './directives/drawer-app-header.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,9 @@ import {DrawerService} from './services/drawer.service';
     DrawerNavListComponent,
     DrawerToggleButtonComponent,
     DrawerToggleDirective,
+    DrawerContentDirective,
+    DrawerAppContentDirective,
+    DrawerAppHeaderDirective,
   ],
   imports: [
     CommonModule,
@@ -26,6 +33,9 @@ import {DrawerService} from './services/drawer.service';
     MatSidenavModule,
   ],
   exports: [
+    DrawerAppHeaderDirective,
+    DrawerAppContentDirective,
+    DrawerContentDirective,
     DrawerLayoutComponent,
     DrawerItemComponent,
     DrawerNavListComponent,
@@ -34,10 +44,13 @@ import {DrawerService} from './services/drawer.service';
   ]
 })
 export class DrawerLayoutModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config: DrawerLayoutConfig = {}): ModuleWithProviders {
+    config = Object.assign({}, DEFAULT_CONFIG, config);
     return {
       ngModule: DrawerLayoutModule,
       providers: [
+        {provide: initialDisabled, useValue: config.initialDisabled},
+        {provide: initialOpen, useValue: config.initialOpen},
         DrawerService
       ]
     };

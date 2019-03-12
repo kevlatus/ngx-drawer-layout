@@ -1,3 +1,15 @@
-<p>
-  route-home works!
-</p>
+<mat-card>
+  <h3>Settings</h3>
+
+  <mat-slide-toggle [checked]="drawer.isDisabled$ | async"
+                    (change)="toggleDrawerState($event)">
+    <span>Drawer disabled</span>
+  </mat-slide-toggle>
+
+  <mat-slide-toggle [(ngModel)]="openOnEnable">Open on enable</mat-slide-toggle>
+
+  <mat-slide-toggle [checked]="drawer.isOpened$ | async"
+                    (change)="drawer.toggle()">
+    <span>Drawer open</span>
+  </mat-slide-toggle>
+</mat-card>

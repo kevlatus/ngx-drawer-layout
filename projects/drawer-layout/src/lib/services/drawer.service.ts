@@ -1,5 +1,8 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Inject, Injectable} from '@angular/core';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
+import {DEFAULT_CONFIG, initialDisabled, initialOpen} from '../config';
 
 /**
  * Service for controlling the state of the {@link DrawerLayoutComponent} used by
@@ -9,22 +12,26 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class DrawerService {
-  private isOpenedSubject = new BehaviorSubject<boolean>(false);
-  private isDisabledSubject = new BehaviorSubject<boolean>(false);
+  private isDisabledSubject = new BehaviorSubject<boolean>(DEFAULT_CONFIG.initialDisabled);
+  private isOpenedSubject = new BehaviorSubject<boolean>(DEFAULT_CONFIG.initialOpen);
+
+  constructor(@Inject(initialDisabled) disabled: boolean, @Inject(initialOpen) open: boolean) {
+    this.isDisabledSubject.next(disabled);
+    this.isOpenedSubject.next(open);
+  }
 
   /**
    * Returns an observable, which fires when the opened state of the drawer changes.
    */
-  public get isOpened$(): Observable<boolean> {
-    return this.isOpenedSubject.asObservable();
-  }
+  public readonly isOpened$: Observable<boolean> =
+    combineLatest(this.isOpenedSubject, this.isDisabledSubject).pipe(
+      map(([open, disabled]) => open && !disabled),
+    );
 
   /**
    * Returns an observable, which fires, when the drawer is en-/disabled.
    */
-  public get isDisabled$(): Observable<boolean> {
-    return this.isDisabledSubject.asObservable();
-  }
+  public readonly isDisabled$: Observable<boolean> = this.isDisabledSubject.asObservable();
 
   /**
    * Opens the drawer.

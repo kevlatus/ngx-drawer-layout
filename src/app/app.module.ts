@@ -1,7 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
-import {MatToolbarModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {MatCardModule, MatSlideToggleModule, MatToolbarModule} from '@angular/material';
 import {DrawerLayoutModule} from 'drawer-layout';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,8 +19,11 @@ import {RouteTestComponent} from './components/route-test/route-test.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatSlideToggleModule,
     MatToolbarModule,
-    DrawerLayoutModule.forRoot(),
+    DrawerLayoutModule.forRoot({initialOpen: true, initialDisabled: true}),
     AppRoutingModule,
   ],
   providers: [],

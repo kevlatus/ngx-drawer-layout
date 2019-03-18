@@ -1,7 +1,7 @@
 <a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)</a>
 ![](https://img.shields.io/circleci/project/github/latusinski/ngx-drawer-layout/master.svg)
 
-# NGX Drawer Layout
+# Angular Drawer Layout
 
 This project is a library for [Angular](https://angular.io/). It provides components, which
  support implementing an app layout using a
@@ -65,16 +65,16 @@ export class AppModule { }
 
 ```html
 <ngx-drawer-layout>
-  <mat-toolbar class="ngx-drawer-layout-header">
+  <mat-toolbar ngxDrawerAppHeader>
     <ngx-drawer-toggle-button></ngx-drawer-toggle-button>
     <div>NGX Drawer Layout Demo</div>
   </mat-toolbar>
 
-  <div class="ngx-drawer-content">
+  <div ngxDrawerContent>
     <div>Drawer Content</div>
   </div>
 
-  <div class="ngx-drawer-layout-content">
+  <div ngxDrawerAppContent>
     <div>App Content</div>
   </div>
 </ngx-drawer-layout>

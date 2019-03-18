@@ -1,4 +1,6 @@
-<ng-content select="[ngxDrawerAppHeader]"></ng-content>
+<div #header>
+  <ng-content select="[ngxDrawerAppHeader]"></ng-content>
+</div>
 
 <mat-drawer-container [hasBackdrop]="hasBackdrop"
                       [autosize]="autosize"
@@ -10,7 +12,7 @@
     <ng-content select="[ngxDrawerContent]"></ng-content>
   </mat-drawer>
 
-  <mat-drawer-content>
+  <mat-drawer-content [style.height]="contentHeight">
     <ng-content select="[ngxDrawerAppContent]"></ng-content>
   </mat-drawer-content>
 </mat-drawer-container>

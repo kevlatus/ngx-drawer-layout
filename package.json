@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "compodoc": "npx compodoc --disablePrivate -p projects/drawer-layout/tsconfig.lib.json -n \"NGX Drawer Layout Docs\" -d docs --theme material",
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build drawer-layout && npm run build:scss",
     "build:scss": "scss-bundle -c scss-bundle.config.json",

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {DrawerService} from '../../services/drawer.service';
@@ -15,7 +15,7 @@ import {DrawerService} from '../../services/drawer.service';
   templateUrl: './drawer-layout.component.html',
   styleUrls: ['./drawer-layout.component.scss']
 })
-export class DrawerLayoutComponent {
+export class DrawerLayoutComponent implements OnInit {
   /**
    * {@link MatDrawerContainer.autosize}
    */
@@ -41,7 +41,10 @@ export class DrawerLayoutComponent {
    */
   @Output() public backdropClicked = new EventEmitter<void>();
 
+  @ViewChild('header') private headerElement: ElementRef<HTMLDivElement>;
+
   isOpened$: Observable<boolean>;
+  contentHeight = '100vh';
 
   constructor(drawer: DrawerService) {
     this.isOpened$ = drawer.isOpened$;
@@ -49,5 +52,14 @@ export class DrawerLayoutComponent {
 
   onBackdropClick() {
     this.backdropClicked.emit();
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      if (this.headerElement) {
+        const height = this.headerElement.nativeElement.offsetHeight;
+        this.contentHeight = `calc(100vh - ${height}px)`;
+      }
+    });
   }
 }

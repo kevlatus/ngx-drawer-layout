@@ -45,12 +45,21 @@ import {DrawerAppHeaderDirective} from './directives/drawer-app-header.directive
 })
 export class DrawerLayoutModule {
   static forRoot(config: DrawerLayoutConfig = {}): ModuleWithProviders {
-    config = Object.assign({}, DEFAULT_CONFIG, config);
     return {
       ngModule: DrawerLayoutModule,
       providers: [
-        {provide: initialDisabled, useValue: config.initialDisabled},
-        {provide: initialOpen, useValue: config.initialOpen},
+        {
+          provide: initialDisabled,
+          useValue: config.initialDisabled === undefined
+            ? DEFAULT_CONFIG.initialDisabled
+            : config.initialDisabled
+        },
+        {
+          provide: initialOpen,
+          useValue: config.initialOpen === undefined
+            ? DEFAULT_CONFIG.initialOpen
+            : config.initialOpen
+        },
         DrawerService
       ]
     };

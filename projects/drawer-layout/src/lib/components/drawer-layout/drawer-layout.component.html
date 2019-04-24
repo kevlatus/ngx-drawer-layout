@@ -5,7 +5,7 @@
 <mat-drawer-container [hasBackdrop]="hasBackdrop"
                       [autosize]="autosize"
                       (backdropClick)="onBackdropClick()">
-  <mat-drawer [mode]="mode"
+  <mat-drawer [class.mode-over]="mode === 'over'" [mode]="mode"
               [opened]="isOpened$ | async"
               [position]="drawerPosition"
               [autoFocus]="drawerAutoFocus">

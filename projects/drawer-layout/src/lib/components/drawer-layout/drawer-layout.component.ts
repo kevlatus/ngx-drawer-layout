@@ -51,12 +51,13 @@ export class DrawerLayoutComponent implements OnInit {
   isOpened$: Observable<boolean>;
   contentHeight = '100vh';
 
-  constructor(drawer: DrawerService) {
+  constructor(public drawer: DrawerService) {
     this.isOpened$ = drawer.isOpened$;
   }
 
   onBackdropClick() {
     this.backdropClicked.emit();
+    this.drawer.close();
   }
 
   ngOnInit(): void {

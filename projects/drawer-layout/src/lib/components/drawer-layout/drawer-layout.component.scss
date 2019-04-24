@@ -6,6 +6,10 @@ mat-drawer {
   min-width: 296px;
 }
 
+mat-drawer:not(.mode-over) {
+  background: transparent;
+}
+
 mat-drawer-content {
   height: 100vh;
 }

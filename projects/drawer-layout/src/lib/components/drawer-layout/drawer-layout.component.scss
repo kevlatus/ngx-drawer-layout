@@ -4,6 +4,8 @@
 
 mat-drawer {
   min-width: 296px;
+  border-top: env(safe-area-inset-top) solid transparent;
+  border-left: env(safe-area-inset-left) solid transparent;
 }
 
 mat-drawer:not(.mode-over) {

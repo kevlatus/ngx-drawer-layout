@@ -37,6 +37,11 @@ export class DrawerLayoutComponent implements OnInit {
   @Input() public hasBackdrop: boolean;
 
   /**
+   * {@link MatDrawer.mode}
+   */
+  @Input() public mode: 'over' | 'push' | 'side' = 'side';
+
+  /**
    * {@link MatDrawerContainer.backdropClick}
    */
   @Output() public backdropClicked = new EventEmitter<void>();

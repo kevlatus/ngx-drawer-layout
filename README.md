@@ -3,9 +3,8 @@
 
 # Angular Drawer Layout
 
-This project is a library for [Angular](https://angular.io/). It provides components, which
- support implementing an app layout using a
- [Material Design drawer](https://material.io/design/components/navigation-drawer.html).
+This library provides [Angular](https://angular.io/) components for implementing a 
+ [Material Design Drawer](https://material.io/design/components/navigation-drawer.html).
  It relies on the [Angular Material Library](https://material.angular.io/).
 
 ## Installing

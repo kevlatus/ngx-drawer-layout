@@ -23,7 +23,7 @@ import {RouteTestComponent} from './components/route-test/route-test.component';
     MatCardModule,
     MatSlideToggleModule,
     MatToolbarModule,
-    DrawerLayoutModule.forRoot({initialOpen: true, initialDisabled: true}),
+    DrawerLayoutModule.forRoot({initialOpen: true, initialDisabled: false}),
     AppRoutingModule,
   ],
   providers: [],

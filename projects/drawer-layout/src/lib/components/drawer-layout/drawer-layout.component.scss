@@ -4,11 +4,13 @@
 
 mat-drawer {
   min-width: 296px;
+  //noinspection CssInvalidFunction
   border-top: env(safe-area-inset-top) solid transparent;
+  //noinspection CssInvalidFunction
   border-left: env(safe-area-inset-left) solid transparent;
 }
 
-mat-drawer:not(.mode-over) {
+mat-drawer.mode-side {
   background: transparent;
 }
 

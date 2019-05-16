@@ -1,4 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {MediaObserver} from '@angular/flex-layout';
 import {Observable} from 'rxjs';
 
 import {DrawerService} from '../../services/drawer.service';
@@ -37,11 +38,6 @@ export class DrawerLayoutComponent implements OnInit {
   @Input() public hasBackdrop: boolean;
 
   /**
-   * {@link MatDrawer.mode}
-   */
-  @Input() public mode: 'over' | 'push' | 'side' = 'side';
-
-  /**
    * {@link MatDrawerContainer.backdropClick}
    */
   @Output() public backdropClicked = new EventEmitter<void>();
@@ -50,9 +46,13 @@ export class DrawerLayoutComponent implements OnInit {
 
   isOpened$: Observable<boolean>;
   contentHeight = '100vh';
+  mode: 'over' | 'side' = 'over';
 
-  constructor(public drawer: DrawerService) {
+  constructor(public drawer: DrawerService, mediaObserver: MediaObserver) {
     this.isOpened$ = drawer.isOpened$;
+    mediaObserver.asObservable().subscribe(() => {
+      this.mode = mediaObserver.isActive('gt-sm') ? 'side' : 'over';
+    });
   }
 
   onBackdropClick() {

@@ -7,9 +7,13 @@
                       (backdropClick)="onBackdropClick()">
   <mat-drawer [class.mode-side]="mode === 'side'" [mode]="mode"
               [opened]="isOpened$ | async"
-              [position]="drawerPosition"
               [autoFocus]="drawerAutoFocus">
     <ng-content select="[ngxDrawerContent]"></ng-content>
+  </mat-drawer>
+
+  <mat-drawer [class.mode-side]="mode === 'side'" [mode]="mode"
+    [opened]="isEndOpened$ | async" position="end">
+    <ng-content select="[ngxEndDrawerContent]"></ng-content>
   </mat-drawer>
 
   <mat-drawer-content [style.height]="contentHeight">

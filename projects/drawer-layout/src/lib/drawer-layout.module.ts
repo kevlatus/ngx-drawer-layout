@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule, MatSidenavModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import { DEFAULT_CONFIG, DrawerConfig, startDrawerConfig, endDrawerConfig, DrawerLayoutConfig, mergeConfig } from './config';
+import { DEFAULT_CONFIG, DrawerConfig, startDrawerConfig, endDrawerConfig } from './config';
 import { DrawerLayoutComponent } from './components/drawer-layout/drawer-layout.component';
 import { DrawerItemComponent } from './components/drawer-item/drawer-item.component';
 import { DrawerNavListComponent } from './components/drawer-nav-list/drawer-nav-list.component';
@@ -46,17 +46,35 @@ import { EndDrawerContentDirective } from './directives/end-drawer-content.direc
   ]
 })
 export class DrawerLayoutModule {
-  static forRoot(config: DrawerLayoutConfig): ModuleWithProviders {
+  static forRoot(startConfig?: DrawerConfig, endConfig?: DrawerConfig): ModuleWithProviders {
     return {
       ngModule: DrawerLayoutModule,
       providers: [
         {
           provide: startDrawerConfig,
-          useValue: mergeConfig(config),
+          useValue: !startConfig
+            ? DEFAULT_CONFIG
+            : {
+              initialDisabled: startConfig.initialDisabled === undefined
+                ? DEFAULT_CONFIG.initialDisabled
+                : startConfig.initialDisabled,
+              initialOpen: startConfig.initialOpen === undefined
+                ? DEFAULT_CONFIG.initialOpen
+                : startConfig.initialOpen,
+            },
         },
         {
           provide: endDrawerConfig,
-          useValue: mergeConfig(config.end),
+          useValue: !endConfig
+          ? DEFAULT_CONFIG
+          : {
+            initialDisabled: endConfig.initialDisabled === undefined
+              ? DEFAULT_CONFIG.initialDisabled
+              : endConfig.initialDisabled,
+            initialOpen: endConfig.initialOpen === undefined
+              ? DEFAULT_CONFIG.initialOpen
+              : endConfig.initialOpen,
+          },
         },
         DrawerService,
       ]

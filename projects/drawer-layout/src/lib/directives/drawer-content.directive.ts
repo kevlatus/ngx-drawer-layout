@@ -5,7 +5,4 @@ import {Directive, HostBinding} from '@angular/core';
 })
 export class DrawerContentDirective {
   @HostBinding('class.ngx-drawer-content') readonly class = true;
-
-  constructor() {
-  }
 }

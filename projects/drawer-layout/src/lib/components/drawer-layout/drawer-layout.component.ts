@@ -37,7 +37,7 @@ export class DrawerLayoutComponent implements OnInit {
    */
   @Output() public backdropClicked = new EventEmitter<void>();
 
-  @ViewChild('header') private headerElement: ElementRef<HTMLDivElement>;
+  @ViewChild('header', { static: true }) private headerElement: ElementRef<HTMLDivElement>;
 
   isOpened$: Observable<boolean>;
   isEndOpened$: Observable<boolean>;

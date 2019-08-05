@@ -2,7 +2,7 @@
  * Public API Surface of drawer-layout
  */
 
-export {DrawerLayoutConfig} from './lib/config';
+export {DrawerConfig} from './lib/config';
 export * from './lib/drawer-layout.module';
 export * from './lib/components/drawer-layout/drawer-layout.component';
 export * from './lib/components/drawer-item/drawer-item.component';

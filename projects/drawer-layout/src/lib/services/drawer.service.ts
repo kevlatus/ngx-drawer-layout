@@ -17,13 +17,13 @@ class DrawerState {
    * Returns an observable, which fires when the opened state of the drawer changes.
    */
   public readonly isOpened$: Observable<boolean> =
-    combineLatest(this.isOpenedSubject, this.isDisabledSubject).pipe(
+    combineLatest([this.isOpenedSubject, this.isDisabledSubject]).pipe(
       map(([open, disabled]) => open && !disabled),
     );
 
   /**
- * Returns an observable, which fires, when the drawer is en-/disabled.
- */
+   * Returns an observable, which fires, when the drawer is en-/disabled.
+   */
   public readonly isDisabled$: Observable<boolean> = this.isDisabledSubject.asObservable();
 
   /**

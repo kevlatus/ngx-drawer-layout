@@ -1,13 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DrawerService } from './drawer.service';
-import {DEFAULT_CONFIG, initialDisabled, initialOpen} from '../config';
+import {DrawerService} from './drawer.service';
+import {DEFAULT_CONFIG, startDrawerConfig, endDrawerConfig} from '../config';
 
 describe('DrawerService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      {provide: initialDisabled, useValue: DEFAULT_CONFIG.initialDisabled},
-      {provide: initialOpen, useValue: DEFAULT_CONFIG.initialOpen},
+      {provide: startDrawerConfig, useValue: DEFAULT_CONFIG},
+      {provide: endDrawerConfig, useValue: DEFAULT_CONFIG},
     ],
   }));
 

@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Inject, Injectable} from '@angular/core';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { DEFAULT_CONFIG, startDrawerConfig, endDrawerConfig, DrawerConfig } from '../config';
+import {startDrawerConfig, endDrawerConfig, DrawerConfig} from '../config';
 
 class DrawerState {
-  private isDisabledSubject = new BehaviorSubject<boolean>(DEFAULT_CONFIG.initialDisabled);
-  private isOpenedSubject = new BehaviorSubject<boolean>(DEFAULT_CONFIG.initialOpen);
+  private isDisabledSubject = new BehaviorSubject<boolean>(false);
+  private isOpenedSubject = new BehaviorSubject<boolean>(true);
 
   constructor(disabled: boolean, open: boolean) {
     this.isDisabledSubject.next(disabled);

@@ -1,6 +1,6 @@
 {
   "name": "ngx-drawer-layout",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "This library provides components, which support implementing a Material drawer layout.",
   "author": {
     "name": "Kevin Latusinski",

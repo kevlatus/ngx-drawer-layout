@@ -1,4 +1,7 @@
 {
-  "entry": "./projects/drawer-layout/src/lib/_theming.scss",
-  "dest": "dist/drawer-layout/_theming.scss"
+  "bundlerOptions": {
+    "rootDir": "./",
+    "entryFile": "./projects/drawer-layout/src/lib/_theming.scss",
+    "outFile": "dist/drawer-layout/_theming.scss"
+  }
 }

@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build drawer-layout && npm run build:scss",
-    "build:scss": "scss-bundle -c scss-bundle.config.json",
+    "build:scss": "scss-bundle -p scss-bundle.config.json",
     "test": "ng test drawer-layout",
     "lint": "ng lint drawer-layout",
     "e2e": "ng e2e drawer-layout",
@@ -31,8 +31,8 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-ng-packagr": "~0.803.2",
     "@angular-devkit/build-angular": "~0.803.2",
+    "@angular-devkit/build-ng-packagr": "~0.803.2",
     "@angular/cli": "~8.2.1",
     "@angular/compiler-cli": "^8.2.0",
     "@angular/language-service": "~8.2.4",

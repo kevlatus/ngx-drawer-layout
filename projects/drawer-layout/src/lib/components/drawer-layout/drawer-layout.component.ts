@@ -1,8 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
-import { Observable } from 'rxjs';
+import {Component, ElementRef, EventEmitter, Input, HostListener, OnInit, Output, ViewChild} from '@angular/core';
+import {Observable} from 'rxjs';
 
-import { DrawerService } from '../../services/drawer.service';
+import {DrawerService} from '../../services/drawer.service';
 
 /**
  * Component, which allows for rendering a typical Material Design drawer layout.
@@ -37,19 +36,25 @@ export class DrawerLayoutComponent implements OnInit {
    */
   @Output() public backdropClicked = new EventEmitter<void>();
 
-  @ViewChild('header', { static: true }) private headerElement: ElementRef<HTMLDivElement>;
+  @ViewChild('header', {static: true}) private headerElement: ElementRef<HTMLDivElement>;
 
   isOpened$: Observable<boolean>;
   isEndOpened$: Observable<boolean>;
   contentHeight = '100vh';
   mode: 'over' | 'side' = 'over';
 
-  constructor(public drawer: DrawerService, mediaObserver: MediaObserver) {
+  constructor(public drawer: DrawerService) {
     this.isOpened$ = drawer.isOpened$;
     this.isEndOpened$ = drawer.end.isOpened$;
-    mediaObserver.asObservable().subscribe(() => {
-      this.mode = mediaObserver.isActive('gt-sm') ? 'side' : 'over';
-    });
+    this.onResize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    const detectedMode = window.innerWidth > 960 ? 'side' : 'over';
+    if (detectedMode !== this.mode) {
+      this.mode = detectedMode;
+    }
   }
 
   onBackdropClick() {

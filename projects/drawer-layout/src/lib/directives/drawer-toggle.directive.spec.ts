@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 
 import {DrawerToggleDirective} from './drawer-toggle.directive';
 import {DrawerService} from '../services/drawer.service';
-import {DEFAULT_CONFIG, startDrawerConfig, endDrawerConfig} from '../config';
+import {startDrawerConfig, endDrawerConfig} from '../config';
 
 @Component({
   template: `
@@ -21,8 +21,14 @@ describe('DrawerToggleDirective', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        {provide: startDrawerConfig, useValue: DEFAULT_CONFIG},
-        {provide: endDrawerConfig, useValue: DEFAULT_CONFIG},
+        {
+          provide: startDrawerConfig,
+          useValue: {initialDisabled: false, initialOpen: true},
+        },
+        {
+          provide: endDrawerConfig,
+          useValue: {initialDisabled: true, initialOpen: false},
+        },
         DrawerService,
       ],
       declarations: [

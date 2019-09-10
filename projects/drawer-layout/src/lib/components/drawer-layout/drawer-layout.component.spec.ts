@@ -3,7 +3,7 @@ import {MatSidenavModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {DrawerLayoutComponent} from './drawer-layout.component';
-import {DEFAULT_CONFIG, endDrawerConfig, startDrawerConfig} from '../../config';
+import {endDrawerConfig, startDrawerConfig} from '../../config';
 
 describe('DrawerLayoutComponent', () => {
   let component: DrawerLayoutComponent;
@@ -16,8 +16,14 @@ describe('DrawerLayoutComponent', () => {
         MatSidenavModule,
       ],
       providers: [
-        {provide: startDrawerConfig, useValue: DEFAULT_CONFIG},
-        {provide: endDrawerConfig, useValue: DEFAULT_CONFIG},
+        {
+          provide: startDrawerConfig,
+          useValue: {initialDisabled: false, initialOpen: true},
+        },
+        {
+          provide: endDrawerConfig,
+          useValue: {initialDisabled: true, initialOpen: false},
+        },
       ],
       declarations: [DrawerLayoutComponent],
     }).compileComponents();

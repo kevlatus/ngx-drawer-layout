@@ -1,5 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, HostListener, OnInit, Output, ViewChild} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 import {DrawerService} from '../../services/drawer.service';
 
@@ -38,23 +37,9 @@ export class DrawerLayoutComponent implements OnInit {
 
   @ViewChild('header', {static: true}) private headerElement: ElementRef<HTMLDivElement>;
 
-  isOpened$: Observable<boolean>;
-  isEndOpened$: Observable<boolean>;
   contentHeight = '100vh';
-  mode: 'over' | 'side' = 'over';
 
   constructor(public drawer: DrawerService) {
-    this.isOpened$ = drawer.isOpened$;
-    this.isEndOpened$ = drawer.end.isOpened$;
-    this.onResize();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    const detectedMode = window.innerWidth > 960 ? 'side' : 'over';
-    if (detectedMode !== this.mode) {
-      this.mode = detectedMode;
-    }
   }
 
   onBackdropClick() {

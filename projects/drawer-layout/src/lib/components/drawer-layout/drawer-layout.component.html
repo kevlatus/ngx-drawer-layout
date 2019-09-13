@@ -5,14 +5,14 @@
 <mat-drawer-container [hasBackdrop]="hasBackdrop"
                       [autosize]="autosize"
                       (backdropClick)="onBackdropClick()">
-  <mat-drawer [class.mode-side]="mode === 'side'" [mode]="mode"
-              [opened]="isOpened$ | async"
+  <mat-drawer [class.mode-side]="(drawer.start.mode$ | async) === 'side'" [mode]="drawer.start.mode$ | async"
+              [opened]="drawer.start.isOpened$ | async"
               [autoFocus]="drawerAutoFocus">
     <ng-content select="[ngxDrawerContent]"></ng-content>
   </mat-drawer>
 
-  <mat-drawer [class.mode-side]="mode === 'side'" [mode]="mode"
-    [opened]="isEndOpened$ | async" position="end">
+  <mat-drawer [class.mode-side]="(drawer.end.mode$ | async) === 'side'" [mode]="drawer.end.mode$ | async"
+    [opened]="drawer.end.isOpened$ | async" position="end">
     <ng-content select="[ngxEndDrawerContent]"></ng-content>
   </mat-drawer>
 

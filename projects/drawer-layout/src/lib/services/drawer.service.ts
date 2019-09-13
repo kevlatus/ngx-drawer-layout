@@ -5,14 +5,9 @@ import {map} from 'rxjs/operators';
 import {startDrawerConfig, endDrawerConfig, DrawerConfig} from '../config';
 
 class DrawerController {
-  private isDisabledSubject = new BehaviorSubject<boolean>(false);
-  private isOpenedSubject = new BehaviorSubject<boolean>(true);
-  private modeSubject = new BehaviorSubject<'over' | 'side'>('over');
-
-  constructor(disabled: boolean, open: boolean) {
-    this.isDisabledSubject.next(disabled);
-    this.isOpenedSubject.next(open);
-  }
+  private readonly isDisabledSubject = new BehaviorSubject<boolean>(false);
+  private readonly isOpenedSubject = new BehaviorSubject<boolean>(true);
+  private readonly modeSubject = new BehaviorSubject<'over' | 'side'>('over');
 
   /**
    * Returns an observable, which fires when the opened state of the drawer changes.
@@ -28,6 +23,23 @@ class DrawerController {
   public readonly isDisabled$: Observable<boolean> = this.isDisabledSubject.asObservable();
 
   public readonly mode$: Observable<'over' | 'side'> = this.modeSubject.asObservable();
+
+  private onResize() {
+    const detectedMode = window.innerWidth > 960 ? 'side' : 'over';
+    if (detectedMode !== this.modeSubject.value) {
+      this.modeSubject.next(detectedMode);
+    }
+  }
+
+  constructor(disabled: boolean, open: boolean, canDetectMode = true) {
+    this.isDisabledSubject.next(disabled);
+    this.isOpenedSubject.next(open);
+
+    if (canDetectMode) {
+      this.onResize();
+      window.addEventListener('resize', () => this.onResize());
+    }
+  }
 
   /**
    * Opens the drawer.

@@ -8,7 +8,7 @@
     "test": "ng test drawer-layout",
     "lint": "ng lint drawer-layout",
     "e2e": "ng e2e drawer-layout",
-    "publish": "npm run build && node scripts/publish.js",
+    "publish": "npm run build && node publish.js",
     "watch": "ng build --watch drawer-layout"
   },
   "private": true,

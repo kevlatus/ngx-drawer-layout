@@ -7,6 +7,7 @@ import {startDrawerConfig, endDrawerConfig, DrawerConfig} from '../config';
 class DrawerController {
   private isDisabledSubject = new BehaviorSubject<boolean>(false);
   private isOpenedSubject = new BehaviorSubject<boolean>(true);
+  private modeSubject = new BehaviorSubject<'over' | 'side'>('over');
 
   constructor(disabled: boolean, open: boolean) {
     this.isDisabledSubject.next(disabled);
@@ -25,6 +26,8 @@ class DrawerController {
    * Returns an observable, which fires, when the drawer is en-/disabled.
    */
   public readonly isDisabled$: Observable<boolean> = this.isDisabledSubject.asObservable();
+
+  public readonly mode$: Observable<'over' | 'side'> = this.modeSubject.asObservable();
 
   /**
    * Opens the drawer.
@@ -64,6 +67,10 @@ class DrawerController {
   public disable(): void {
     this.isDisabledSubject.next(true);
     this.close();
+  }
+
+  public setMode(mode: 'over' | 'side'): void {
+    this.modeSubject.next(mode);
   }
 }
 

@@ -2,14 +2,14 @@
   "name": "drawer-layout-app",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve",
-    "build": "ng build drawer-layout && npm run build:scss",
+    "start": "ng serve drawer-layout-app",
+    "build": "ng build && npm run build:scss",
     "build:scss": "scss-bundle -p scss-bundle.config.json",
-    "test": "ng test drawer-layout",
-    "lint": "ng lint drawer-layout",
-    "e2e": "ng e2e drawer-layout",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
     "publish": "npm run build && node publish.js",
-    "watch": "ng build --watch drawer-layout"
+    "watch": "ng build --watch"
   },
   "private": true,
   "dependencies": {

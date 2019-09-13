@@ -1,6 +1,7 @@
 <h3 class="mat-h3" *ngIf="!!heading">{{heading}}</h3>
 
 <ngx-drawer-item *ngFor="let item of items"
+                 (click)="onItemClicked()"
                  [icon]="item.icon" [text]="item.text"
                  [routerLink]="item.href" routerLinkActive="active"
                  [routerLinkActiveOptions]="{exact: item.exact}"></ngx-drawer-item>

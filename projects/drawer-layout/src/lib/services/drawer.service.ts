@@ -4,7 +4,7 @@ import {map} from 'rxjs/operators';
 
 import {startDrawerConfig, endDrawerConfig, DrawerConfig} from '../config';
 
-class DrawerState {
+class DrawerController {
   private isDisabledSubject = new BehaviorSubject<boolean>(false);
   private isOpenedSubject = new BehaviorSubject<boolean>(true);
 
@@ -75,12 +75,12 @@ class DrawerState {
   providedIn: 'root'
 })
 export class DrawerService {
-  public readonly start: DrawerState;
-  public readonly end: DrawerState;
+  public readonly start: DrawerController;
+  public readonly end: DrawerController;
 
   constructor(@Inject(startDrawerConfig) startConfig: DrawerConfig, @Inject(endDrawerConfig) endConfig: DrawerConfig) {
-    this.start = new DrawerState(startConfig.initialDisabled, startConfig.initialOpen);
-    this.end = new DrawerState(endConfig.initialDisabled, endConfig.initialOpen);
+    this.start = new DrawerController(startConfig.initialDisabled, startConfig.initialOpen);
+    this.end = new DrawerController(endConfig.initialDisabled, endConfig.initialOpen);
 
     this.isOpened$ = this.start.isOpened$;
     this.isDisabled$ = this.start.isDisabled$;

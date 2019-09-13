@@ -5,7 +5,7 @@
     "start": "ng serve drawer-layout-app",
     "build": "ng build && npm run build:scss",
     "build:scss": "scss-bundle -p scss-bundle.config.json",
-    "test": "ng test",
+    "test": "ng test drawer-layout",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "publish": "npm run build && node publish.js",

@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {DrawerLayoutModule} from 'drawer-layout';
 
-import { RouteHomeComponent } from './route-home.component';
+import {RouteHomeComponent} from './route-home.component';
 
 describe('RouteHomeComponent', () => {
   let component: RouteHomeComponent;
@@ -8,9 +12,17 @@ describe('RouteHomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouteHomeComponent ]
+      declarations: [
+        RouteHomeComponent
+      ],
+      imports: [
+        FormsModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        DrawerLayoutModule.forRoot(),
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

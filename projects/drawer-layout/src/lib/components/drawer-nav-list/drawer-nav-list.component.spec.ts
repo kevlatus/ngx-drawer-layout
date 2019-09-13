@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 
+import {startDrawerConfig, endDrawerConfig} from '../../config';
 import {DrawerNavListComponent} from './drawer-nav-list.component';
 import {DrawerItemComponent} from '../drawer-item/drawer-item.component';
 
@@ -19,6 +20,16 @@ describe('DrawerNavListComponent', () => {
         RouterModule,
         MatIconModule,
       ],
+      providers: [
+        {
+          provide: startDrawerConfig,
+          useValue: {initialDisabled: false, initialOpen: true},
+        },
+        {
+          provide: endDrawerConfig,
+          useValue: {initialDisabled: true, initialOpen: false},
+        },
+      ]
     })
       .compileComponents();
   }));

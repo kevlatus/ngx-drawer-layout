@@ -1,8 +1,9 @@
-import {Inject, Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import {startDrawerConfig, endDrawerConfig, DrawerConfig} from '../config';
+import { startDrawerConfig, endDrawerConfig, DrawerConfig } from '../config';
+import { EventManager } from '@angular/platform-browser';
 
 class DrawerController {
   private readonly isDisabledSubject = new BehaviorSubject<boolean>(false);
@@ -24,20 +25,19 @@ class DrawerController {
 
   public readonly mode$: Observable<'over' | 'side'> = this.modeSubject.asObservable();
 
-  private onResize() {
-    const detectedMode = window.innerWidth > 960 ? 'side' : 'over';
+  public onResize() {
+    const detectedMode = this.window.innerWidth > 960 ? 'side' : 'over';
     if (detectedMode !== this.modeSubject.value) {
       this.modeSubject.next(detectedMode);
     }
   }
 
-  constructor(disabled: boolean, open: boolean, canDetectMode = true) {
+  constructor(private window: Window, disabled: boolean, open: boolean, canDetectMode = true) {
     this.isDisabledSubject.next(disabled);
     this.isOpenedSubject.next(open);
 
     if (canDetectMode) {
       this.onResize();
-      window.addEventListener('resize', () => this.onResize());
     }
   }
 
@@ -97,12 +97,22 @@ export class DrawerService {
   public readonly start: DrawerController;
   public readonly end: DrawerController;
 
-  constructor(@Inject(startDrawerConfig) startConfig: DrawerConfig, @Inject(endDrawerConfig) endConfig: DrawerConfig) {
-    this.start = new DrawerController(startConfig.initialDisabled, startConfig.initialOpen);
-    this.end = new DrawerController(endConfig.initialDisabled, endConfig.initialOpen);
+  constructor(
+    @Inject(startDrawerConfig) startConfig: DrawerConfig,
+    @Inject(endDrawerConfig) endConfig: DrawerConfig,
+    @Inject('window') window: any,
+    eventManager: EventManager
+  ) {
+    this.start = new DrawerController(window, startConfig.initialDisabled, startConfig.initialOpen);
+    this.end = new DrawerController(window, endConfig.initialDisabled, endConfig.initialOpen);
 
     this.isOpened$ = this.start.isOpened$;
     this.isDisabled$ = this.start.isDisabled$;
+
+    eventManager.addGlobalEventListener('window', 'resize', () => {
+      this.start.onResize();
+      this.end.onResize();
+    });
   }
 
   /**

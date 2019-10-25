@@ -1,0 +1,32 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 10.16.3
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.16.3
+
+      - name: Install dependencies
+        run: npm ci
+
+      # - name: Run tests # TODO: enable tests
+      #   run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Write .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
+
+      - name: Publish to npm
+        run: npm run publish

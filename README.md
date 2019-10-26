@@ -1,80 +1,27 @@
-<a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)</a>
-![](https://img.shields.io/circleci/project/github/kevlatus/ngx-drawer-layout/master.svg)
+# NgxDrawerLayout
 
-# Angular Drawer Layout
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
-This library provides [Angular](https://angular.io/) components for implementing a 
- [Material Design Drawer](https://material.io/design/components/navigation-drawer.html).
- It relies on the [Angular Material Library](https://material.angular.io/).
+## Development server
 
-## Installing
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Before installing, make sure to add Angular Material to your project. When using Angular CLI, you can run:
-```
-ng add @angular/material
-```
-For alternative installation refer to the [quick start guide](https://material.angular.io/guide/getting-started).  
+## Code scaffolding
 
-Using npm, you can install the library with:  
-```
-npm install --save ngx-drawer-layout
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Enabling Material theming 
+## Build
 
-If you want to benefit from Material theming, you need to use Angular Material
- with [a custom theme](https://material.angular.io/guide/theming#defining-a-custom-theme).
- Then, you can add theming to the drawer layout like this:
- 
-```scss
-@import '~@angular/material/theming';
-@import '~ngx-drawer-layout/theming'; // <-- include SASS lib file
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-@include mat-core();
+## Running unit tests
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-@include angular-material-theme($theme);
-@include ngx-drawer-layout-theme($theme); // <-- include the drawer layout theme
-``` 
+## Running end-to-end tests
 
-## Usage
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-**1. Import the DrawerLayoutModule**
+## Further help
 
-```javascript
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {DrawerLayoutModule} from 'ngx-drawer-layout';
-
-@NgModule({
-    imports: [
-        BrowserModule,
-        DrawerLayoutModule.forRoot() // <-- import module
-    ],
-    bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-**2. Use the DrawerLayoutComponent**
-
-```html
-<ngx-drawer-layout>
-  <mat-toolbar ngxDrawerAppHeader>
-    <ngx-drawer-toggle-button></ngx-drawer-toggle-button>
-    <div>NGX Drawer Layout Demo</div>
-  </mat-toolbar>
-
-  <div ngxDrawerContent>
-    <div>Drawer Content</div>
-  </div>
-
-  <div ngxDrawerAppContent>
-    <div>App Content</div>
-  </div>
-</ngx-drawer-layout>
-```
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

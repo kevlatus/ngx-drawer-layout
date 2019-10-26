@@ -1,0 +1,7 @@
+{
+  "bundlerOptions": {
+    "rootDir": "./",
+    "entryFile": "./projects/ngx-drawer-layout/src/lib/_theming.scss",
+    "outFile": "dist/ngx-drawer-layout/_theming.scss"
+  }
+}

@@ -17,5 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run tests on library
+        run: npm run test:lib -- --no-watch --no-progress
+
+      - name: Run tests on demo-app
         run: npm run test

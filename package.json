@@ -6,13 +6,14 @@
     "start": "ng serve",
     "watch:lib": "ng build --project=ngx-drawer-layout --watch",
     "build": "ng build",
-    "build:lib": "ng build --project=ngx-drawer-layout && npm run build:scss",
+    "build:lib": "ng build --project=ngx-drawer-layout && npm run build:scss && npm run copy-files",
     "build:scss": "scss-bundle -p scss-bundle.config.json",
     "test": "ng test",
     "test:lib": "ng test --project=ngx-drawer-layout",
     "lint": "ng lint",
     "lint:lib": "ng lint --project=ngx-drawer-layout",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy-files": "cpx LICENSE dist/ngx-drawer-layout && cpx README.md dist/ngx-drawer-layout"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cpx": "^1.5.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

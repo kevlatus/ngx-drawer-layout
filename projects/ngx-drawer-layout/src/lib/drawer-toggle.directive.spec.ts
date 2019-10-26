@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerService } from './drawer.service';
-import { startDrawerConfig, endDrawerConfig } from '../config';
+import { startDrawerConfig, endDrawerConfig } from './config';
 
 @Component({
   template: `

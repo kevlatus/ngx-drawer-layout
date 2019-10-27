@@ -9,7 +9,3 @@ mat-card {
   max-width: 600px;
   margin: 0 auto;
 }
-
-mat-card > :not(:first-child):not(:last-child) {
-  margin-bottom: 16px;
-}

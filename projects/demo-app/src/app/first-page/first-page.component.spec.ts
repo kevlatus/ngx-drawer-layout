@@ -5,6 +5,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DrawerLayoutModule } from 'ngx-drawer-layout';
 
 import { FirstPageComponent } from './first-page.component';
+import { DrawerConfigFormComponent } from '../drawer-config-form/drawer-config-form.component';
 
 describe('FirstPageComponent', () => {
   let component: FirstPageComponent;
@@ -12,7 +13,10 @@ describe('FirstPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FirstPageComponent],
+      declarations: [
+        DrawerConfigFormComponent,
+        FirstPageComponent,
+      ],
       imports: [
         FormsModule,
         MatCardModule,

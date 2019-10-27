@@ -12,12 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
+import { DrawerConfigFormComponent } from './drawer-config-form/drawer-config-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DrawerConfigFormComponent,
     FirstPageComponent,
-    SecondPageComponent
+    SecondPageComponent,
   ],
   imports: [
     BrowserModule,

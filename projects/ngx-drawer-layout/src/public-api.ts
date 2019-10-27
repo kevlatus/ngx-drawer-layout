@@ -10,4 +10,5 @@ export * from './lib/drawer-nav-list/drawer-nav-list.component';
 export * from './lib/drawer-toggle-button/drawer-toggle-button.component';
 export * from './lib/drawer-toggle.directive';
 export * from './lib/drawer-nav-item.model';
+export * from './lib/drawer.controller';
 export * from './lib/drawer.service';

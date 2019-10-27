@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 import { DrawerService } from '../drawer.service';
+import { take, tap, filter } from 'rxjs/operators';
 
 /**
  * Component, which allows for rendering a typical Material Design drawer layout.
@@ -45,8 +46,14 @@ export class DrawerLayoutComponent implements OnInit {
 
   onBackdropClick() {
     this.backdropClicked.emit();
-    this.drawer.close();
-    this.drawer.end.close();
+
+    for (const drawer of [this.drawer.start, this.drawer.end]) {
+      drawer.mode$.pipe(
+        take(1),
+        filter(mode => mode === 'over'),
+        tap(() => drawer.close()),
+      ).subscribe();
+    }
   }
 
   ngOnInit(): void {

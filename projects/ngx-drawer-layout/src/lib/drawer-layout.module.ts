@@ -1,5 +1,5 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, ModuleWithProviders, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,8 +13,10 @@ import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
 import { DrawerNavListComponent } from './drawer-nav-list/drawer-nav-list.component';
 
-export function windowFactory() {
-  return window;
+export function windowFactory(platformId: {}) {
+  if (isPlatformBrowser(platformId)) {
+    return window;
+  }
 }
 
 @NgModule({
@@ -38,6 +40,10 @@ export function windowFactory() {
     DrawerLayoutComponent,
     DrawerToggleButtonComponent,
     DrawerNavListComponent,
+  ],
+  providers: [
+    DrawerService,
+    { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID]},
   ]
 })
 export class DrawerLayoutModule {
@@ -45,7 +51,6 @@ export class DrawerLayoutModule {
     return {
       ngModule: DrawerLayoutModule,
       providers: [
-        { provide: 'window', useFactory: windowFactory },
         {
           provide: startDrawerConfig,
           useValue: !startConfig
@@ -72,7 +77,6 @@ export class DrawerLayoutModule {
                 : endConfig.initialOpen,
             },
         },
-        DrawerService,
       ]
     };
   }

@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 
-import { DrawerConfig, startDrawerConfig, endDrawerConfig } from './config';
+import { DrawerConfig, startDrawerConfig, endDrawerConfig } from './drawer.config';
 import { DrawerService } from './drawer.service';
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerItemComponent } from './drawer-item/drawer-item.component';

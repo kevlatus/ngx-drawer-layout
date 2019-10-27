@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
-import { startDrawerConfig, endDrawerConfig, DrawerConfig } from './config';
+import { startDrawerConfig, endDrawerConfig, DrawerConfig } from './drawer.config';
 import { DrawerController } from './drawer.controller';
 
 /**

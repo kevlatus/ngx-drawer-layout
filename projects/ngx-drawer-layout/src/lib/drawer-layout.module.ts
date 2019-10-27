@@ -5,18 +5,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 
-import { DrawerConfig, startDrawerConfig, endDrawerConfig } from './drawer.config';
+import { defaultDrawerLayoutConfig, DrawerLayoutConfig, PASSED_DRAWER_CONFIG, DRAWER_CONFIG } from './drawer.config';
 import { DrawerService } from './drawer.service';
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerItemComponent } from './drawer-item/drawer-item.component';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
 import { DrawerNavListComponent } from './drawer-nav-list/drawer-nav-list.component';
+import { mergeDeep } from './util';
 
 export function windowFactory(platformId: {}) {
   if (isPlatformBrowser(platformId)) {
     return window;
   }
+}
+
+export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutConfig {
+  if (!passedConfig) {
+    return defaultDrawerLayoutConfig;
+  }
+
+  return mergeDeep(defaultDrawerLayoutConfig, passedConfig);
 }
 
 @NgModule({
@@ -43,39 +52,19 @@ export function windowFactory(platformId: {}) {
   ],
   providers: [
     DrawerService,
-    { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID]},
+    { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
   ]
 })
 export class DrawerLayoutModule {
-  static forRoot(startConfig?: DrawerConfig, endConfig?: DrawerConfig): ModuleWithProviders {
+  static forRoot(config: DrawerLayoutConfig = defaultDrawerLayoutConfig): ModuleWithProviders {
     return {
       ngModule: DrawerLayoutModule,
       providers: [
+        { provide: PASSED_DRAWER_CONFIG, useValue: config },
         {
-          provide: startDrawerConfig,
-          useValue: !startConfig
-            ? { initialDisabled: false, initialOpen: true }
-            : {
-              initialDisabled: startConfig.initialDisabled === undefined
-                ? false
-                : startConfig.initialDisabled,
-              initialOpen: startConfig.initialOpen === undefined
-                ? true
-                : startConfig.initialOpen,
-            },
-        },
-        {
-          provide: endDrawerConfig,
-          useValue: !endConfig
-            ? { initialDisabled: true, initialOpen: false }
-            : {
-              initialDisabled: endConfig.initialDisabled === undefined
-                ? true
-                : endConfig.initialDisabled,
-              initialOpen: endConfig.initialOpen === undefined
-                ? false
-                : endConfig.initialOpen,
-            },
+          provide: DRAWER_CONFIG,
+          useFactory: configFactory,
+          deps: [PASSED_DRAWER_CONFIG],
         },
       ]
     };

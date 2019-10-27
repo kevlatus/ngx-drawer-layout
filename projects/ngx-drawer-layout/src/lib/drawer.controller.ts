@@ -1,6 +1,8 @@
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { DrawerConfig } from './drawer.config';
+
 export class DrawerController {
   private readonly isDisabledSubject = new BehaviorSubject<boolean>(false);
   private readonly isOpenedSubject = new BehaviorSubject<boolean>(true);
@@ -28,9 +30,9 @@ export class DrawerController {
     }
   }
 
-  constructor(private window: Window, disabled: boolean, open: boolean, canDetectMode = true) {
-    this.isDisabledSubject.next(disabled);
-    this.isOpenedSubject.next(open);
+  constructor(private window: Window, config: DrawerConfig, canDetectMode = true) {
+    this.isDisabledSubject.next(config.initialDisabled);
+    this.isOpenedSubject.next(config.initialOpen);
 
     if (canDetectMode) {
       this.onResize();

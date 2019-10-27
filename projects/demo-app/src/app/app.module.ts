@@ -26,7 +26,10 @@ import { SecondPageComponent } from './second-page/second-page.component';
     MatCardModule,
     MatSlideToggleModule,
     MatToolbarModule,
-    DrawerLayoutModule.forRoot({ initialOpen: true, initialDisabled: false }, { initialDisabled: false }),
+    DrawerLayoutModule.forRoot({
+      start: { initialOpen: true, initialDisabled: false },
+      end: { initialDisabled: false }
+    }),
 
     AppRoutingModule,
   ],

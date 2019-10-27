@@ -2,7 +2,7 @@
  * Public API Surface of ngx-drawer-layout
  */
 
-export { DrawerConfig } from './lib/drawer.config';
+export { DrawerConfig, DrawerLayoutConfig } from './lib/drawer.config';
 export * from './lib/drawer-layout.module';
 export * from './lib/drawer-layout/drawer-layout.component';
 export * from './lib/drawer-item/drawer-item.component';

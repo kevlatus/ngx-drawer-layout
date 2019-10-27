@@ -1,5 +1,5 @@
 <a target="_blank" href="https://www.npmjs.com/package/ngx-drawer-layout">![](https://img.shields.io/npm/v/ngx-drawer-layout.svg)</a>
-[![Build Status](https://github.com/kevlatus/ngx-drawer-layout/workflows/Continuous Integration/badge.svg)](https://github.com/kevlatus/ngx-drawer-layout/actions)
+[![Build Status](https://github.com/kevlatus/ngx-drawer-layout/workflows/Continuous%20Integration/badge.svg)](https://github.com/kevlatus/ngx-drawer-layout/actions)
 
 # Angular Drawer Layout
 

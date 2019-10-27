@@ -12,3 +12,4 @@ export * from './lib/drawer-toggle.directive';
 export * from './lib/drawer-nav-item.model';
 export * from './lib/drawer.controller';
 export * from './lib/drawer.service';
+export * from './lib/end-drawer-content.directive';

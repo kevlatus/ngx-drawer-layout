@@ -13,6 +13,7 @@ import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
 import { DrawerNavListComponent } from './drawer-nav-list/drawer-nav-list.component';
 import { mergeDeep } from './util';
+import { EndDrawerContentDirective } from './end-drawer-content.directive';
 
 export function windowFactory(platformId: {}) {
   if (isPlatformBrowser(platformId)) {
@@ -35,6 +36,7 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
     DrawerLayoutComponent,
     DrawerToggleButtonComponent,
     DrawerNavListComponent,
+    EndDrawerContentDirective,
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
     DrawerLayoutComponent,
     DrawerToggleButtonComponent,
     DrawerNavListComponent,
+    EndDrawerContentDirective,
   ],
   providers: [
     DrawerService,

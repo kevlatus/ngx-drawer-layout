@@ -21,16 +21,11 @@ export class DrawerService {
     @Inject('window') window: any,
     eventManager: EventManager
   ) {
-    this.start = new DrawerController(window, config.start);
-    this.end = new DrawerController(window, config.end);
+    this.start = new DrawerController(window, config.start, eventManager);
+    this.end = new DrawerController(window, config.end, eventManager);
 
     this.isOpened$ = this.start.isOpened$;
     this.isDisabled$ = this.start.isDisabled$;
-
-    eventManager.addGlobalEventListener('window', 'resize', () => {
-      this.start.onResize();
-      this.end.onResize();
-    });
   }
 
   /**

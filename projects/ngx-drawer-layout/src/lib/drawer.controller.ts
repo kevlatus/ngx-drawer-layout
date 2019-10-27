@@ -2,6 +2,7 @@ import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DrawerConfig } from './drawer.config';
+import { EventManager } from '@angular/platform-browser';
 
 export class DrawerController {
   private readonly isDisabledSubject = new BehaviorSubject<boolean>(false);
@@ -30,12 +31,15 @@ export class DrawerController {
     }
   }
 
-  constructor(private window: Window, config: DrawerConfig, canDetectMode = true) {
+  constructor(private window: Window, config: DrawerConfig, eventManager: EventManager) {
     this.isDisabledSubject.next(config.initialDisabled);
     this.isOpenedSubject.next(config.initialOpen);
 
-    if (canDetectMode) {
+    if (config.autoDetectMode) {
       this.onResize();
+      eventManager.addGlobalEventListener('window', 'resize', () => {
+        this.onResize();
+      });
     }
   }
 

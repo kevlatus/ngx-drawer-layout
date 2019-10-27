@@ -3,6 +3,7 @@ import { InjectionToken } from '@angular/core';
 export interface DrawerConfig {
   initialDisabled?: boolean;
   initialOpen?: boolean;
+  autoDetectMode?: boolean;
 }
 
 export interface DrawerLayoutConfig {
@@ -11,11 +12,13 @@ export interface DrawerLayoutConfig {
 }
 
 const defaultStartDrawerConfig: DrawerConfig = {
+  autoDetectMode: true,
   initialDisabled: false,
   initialOpen: true,
 };
 
 const defaultEndDrawerConfig: DrawerConfig = {
+  autoDetectMode: false,
   initialDisabled: true,
   initialOpen: false,
 };

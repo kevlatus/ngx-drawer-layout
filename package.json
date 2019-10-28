@@ -55,7 +55,7 @@
     "scss-bundle": "^3.0.1",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
-    "tslint": "~5.15.0",
+    "tslint": "~5.20.0",
     "typescript": "~3.5.3"
   }
 }

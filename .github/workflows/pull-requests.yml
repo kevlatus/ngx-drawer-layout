@@ -20,5 +20,8 @@ jobs:
       - name: Run tests on library
         run: npm run test:lib -- --no-watch --no-progress --browsers=ChromeHeadless
 
+      - name: Build
+        run: npm run build:lib
+
       - name: Run tests on demo-app
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless

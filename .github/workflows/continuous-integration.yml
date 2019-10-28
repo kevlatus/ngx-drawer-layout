@@ -22,11 +22,11 @@ jobs:
       # - name: Run tests on library # TODO: enable tests
       #   run: npm run test:lib -- --no-watch --no-progress --browsers=ChromeHeadless
 
-      # - name: Run tests on demo app # TODO: enable tests
-      #   run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
-
       - name: Build
         run: npm run build:lib
+
+      # - name: Run tests on demo app # TODO: enable tests
+      #   run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
 
       - name: Write .npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc

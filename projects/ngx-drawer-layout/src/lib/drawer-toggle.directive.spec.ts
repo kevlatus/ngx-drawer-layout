@@ -1,10 +1,11 @@
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerService } from './drawer.service';
-import { startDrawerConfig, endDrawerConfig } from './config';
+import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from './drawer.config';
+import { windowFactory } from './drawer-layout.module';
 
 @Component({
   template: `
@@ -21,14 +22,8 @@ describe('DrawerToggleDirective', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        {
-          provide: startDrawerConfig,
-          useValue: { initialDisabled: false, initialOpen: true },
-        },
-        {
-          provide: endDrawerConfig,
-          useValue: { initialDisabled: true, initialOpen: false },
-        },
+        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
+        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
         DrawerService,
       ],
       declarations: [

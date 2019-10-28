@@ -1,10 +1,12 @@
+import { PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { startDrawerConfig, endDrawerConfig } from '../config';
+import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from '../drawer.config';
 import { DrawerNavListComponent } from './drawer-nav-list.component';
 import { DrawerItemComponent } from '../drawer-item/drawer-item.component';
+import { windowFactory } from '../drawer-layout.module';
 
 describe('DrawerNavListComponent', () => {
   let component: DrawerNavListComponent;
@@ -14,21 +16,15 @@ describe('DrawerNavListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         DrawerItemComponent,
-        DrawerNavListComponent
+        DrawerNavListComponent,
       ],
       imports: [
-        RouterModule,
+        RouterTestingModule,
         MatIconModule,
       ],
       providers: [
-        {
-          provide: startDrawerConfig,
-          useValue: { initialDisabled: false, initialOpen: true },
-        },
-        {
-          provide: endDrawerConfig,
-          useValue: { initialDisabled: true, initialOpen: false },
-        },
+        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
+        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
       ]
     })
       .compileComponents();

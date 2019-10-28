@@ -1,8 +1,10 @@
+import { PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { DrawerToggleButtonComponent } from './drawer-toggle-button.component';
-import { startDrawerConfig, endDrawerConfig } from '../config';
+import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from '../drawer.config';
+import { windowFactory } from '../drawer-layout.module';
 
 describe('DrawerToggleButtonComponent', () => {
   let component: DrawerToggleButtonComponent;
@@ -15,14 +17,8 @@ describe('DrawerToggleButtonComponent', () => {
         MatIconModule,
       ],
       providers: [
-        {
-          provide: startDrawerConfig,
-          useValue: { initialDisabled: false, initialOpen: true },
-        },
-        {
-          provide: endDrawerConfig,
-          useValue: { initialDisabled: true, initialOpen: false },
-        },
+        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
+        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
       ],
       declarations: [DrawerToggleButtonComponent]
     })

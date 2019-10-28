@@ -13,7 +13,7 @@ export class DrawerConfigFormComponent {
   @Input() public drawer: DrawerController;
   @Input() public canToggleMode = false;
   @Input() public mode: 'over' | 'side' = 'over';
-  @Output() public modeChange = new EventEmitter<'mode' | 'side'>();
+  @Output() public modeChange = new EventEmitter<'over' | 'side'>();
 
   constructor() { }
 
@@ -23,5 +23,9 @@ export class DrawerConfigFormComponent {
     } else {
       this.drawer.enable(this.openOnEnable);
     }
+  }
+
+  onModeChange(event: 'over' | 'side') {
+    this.modeChange.emit(event);
   }
 }

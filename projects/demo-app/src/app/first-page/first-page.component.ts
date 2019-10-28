@@ -7,7 +7,7 @@ import { DrawerService } from 'ngx-drawer-layout';
   styleUrls: ['./first-page.component.scss']
 })
 export class FirstPageComponent {
-  private fEndMode: 'over' | 'side' = 'over'
+  private fEndMode: 'over' | 'side' = 'over';
 
   get endMode() {
     return this.fEndMode;
@@ -15,6 +15,7 @@ export class FirstPageComponent {
 
   set endMode(v) {
     this.fEndMode = v;
+    console.log(v);
     this.drawer.end.setMode(v);
   }
 

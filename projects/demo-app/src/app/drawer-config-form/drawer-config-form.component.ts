@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DrawerController } from 'ngx-drawer-layout';
 
@@ -11,6 +11,9 @@ export class DrawerConfigFormComponent {
   openOnEnable = true;
 
   @Input() public drawer: DrawerController;
+  @Input() public canToggleMode = false;
+  @Input() public mode: 'over' | 'side' = 'over';
+  @Output() public modeChange = new EventEmitter<'mode' | 'side'>();
 
   constructor() { }
 

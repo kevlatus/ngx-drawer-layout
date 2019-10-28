@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,6 +26,7 @@ import { DrawerConfigFormComponent } from './drawer-config-form/drawer-config-fo
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatButtonToggleModule,
     MatCardModule,
     MatSlideToggleModule,
     MatToolbarModule,

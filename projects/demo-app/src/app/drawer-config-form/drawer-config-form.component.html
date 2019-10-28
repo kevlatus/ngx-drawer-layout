@@ -8,4 +8,9 @@
   <mat-slide-toggle [checked]="drawer.isOpened$ | async" (change)="drawer.toggle()">
     <span>Drawer open</span>
   </mat-slide-toggle>
+
+  <mat-button-toggle-group name="drawerMode" [(ngModel)]="mode" *ngIf="canToggleMode">
+    <mat-button-toggle value="over">over</mat-button-toggle>
+    <mat-button-toggle value="side">side</mat-button-toggle>
+  </mat-button-toggle-group>
 </div>

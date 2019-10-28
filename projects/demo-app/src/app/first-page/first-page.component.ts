@@ -15,7 +15,6 @@ export class FirstPageComponent {
 
   set endMode(v) {
     this.fEndMode = v;
-    console.log(v);
     this.drawer.end.setMode(v);
   }
 

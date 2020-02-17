@@ -23,7 +23,7 @@ jobs:
       #   run: npm run test:lib -- --no-watch --no-progress --browsers=ChromeHeadless
 
       - name: Build
-        run: npm run build:lib
+        run: npm run build
 
       # - name: Run tests on demo app # TODO: enable tests
       #   run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
@@ -32,5 +32,5 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
 
       - name: Publish to npm
-        working-directory: ./dist/ngx-drawer-layout
+        working-directory: ./dist/drawer-layout
         run: npm publish

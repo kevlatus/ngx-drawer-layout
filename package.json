@@ -1,19 +1,15 @@
 {
-  "name": "ngx-drawer-layout",
+  "name": "ngx-drawer-layout-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "watch:lib": "ng build --project=ngx-drawer-layout --watch",
-    "build": "ng build",
-    "build:lib": "ng build --project=ngx-drawer-layout && npm run build:scss && npm run copy-files",
+    "watch": "ng build --project=drawer-layout --watch",
+    "build": "ng build --project=drawer-layout && npm run build:scss && npm run copy-files",
     "build:scss": "scss-bundle -p scss-bundle.config.json",
-    "test": "ng test",
-    "test:lib": "ng test --project=ngx-drawer-layout",
-    "lint": "ng lint",
-    "lint:lib": "ng lint --project=ngx-drawer-layout",
-    "e2e": "ng e2e",
-    "copy-files": "cpx LICENSE dist/ngx-drawer-layout && cpx README.md dist/ngx-drawer-layout"
+    "test": "ng test --project=drawer-layout",
+    "lint": "ng lint --project=drawer-layout",
+    "copy-files": "cpx LICENSE dist/drawer-layout && cpx README.md dist/drawer-layout"
   },
   "private": true,
   "dependencies": {

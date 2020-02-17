@@ -59,7 +59,7 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
   ]
 })
 export class DrawerLayoutModule {
-  static forRoot(config: DrawerLayoutConfig = defaultDrawerLayoutConfig): ModuleWithProviders {
+  static forRoot(config: DrawerLayoutConfig = defaultDrawerLayoutConfig): ModuleWithProviders<DrawerLayoutModule> {
     return {
       ngModule: DrawerLayoutModule,
       providers: [

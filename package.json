@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "watch": "ng build --project=drawer-layout --watch",
-    "build": "ng build --project=drawer-layout --prod && npm run build:scss && npm run copy-files",
-    "build:scss": "scss-bundle -p scss-bundle.config.json",
+    "build": "ng build --project=drawer-layout --prod && npm run copy-files",
     "test": "ng test --project=drawer-layout",
     "lint": "ng lint --project=drawer-layout",
     "copy-files": "cpx LICENSE dist/drawer-layout && cpx README.md dist/drawer-layout"

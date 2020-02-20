@@ -3,5 +3,8 @@
   "dest": "../../dist/drawer-layout",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    "./_theming.scss"
+  ]
 }

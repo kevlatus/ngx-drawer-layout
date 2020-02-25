@@ -1,6 +1,6 @@
 import { PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatSidenavModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DrawerLayoutComponent } from './drawer-layout.component';

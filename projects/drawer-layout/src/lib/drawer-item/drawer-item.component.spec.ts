@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DrawerItemComponent } from './drawer-item.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('DrawerItemComponent', () => {
   let component: DrawerItemComponent;

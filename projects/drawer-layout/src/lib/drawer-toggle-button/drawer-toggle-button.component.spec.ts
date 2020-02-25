@@ -1,6 +1,7 @@
 import { PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { DrawerToggleButtonComponent } from './drawer-toggle-button.component';
 import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from '../drawer.config';

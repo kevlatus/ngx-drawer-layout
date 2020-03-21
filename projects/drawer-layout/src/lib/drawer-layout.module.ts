@@ -8,10 +8,8 @@ import { RouterModule } from '@angular/router';
 import { defaultDrawerLayoutConfig, DrawerLayoutConfig, PASSED_DRAWER_CONFIG, DRAWER_CONFIG } from './drawer.config';
 import { DrawerService } from './drawer.service';
 import { DrawerToggleDirective } from './drawer-toggle.directive';
-import { DrawerItemComponent } from './drawer-item/drawer-item.component';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 import { DrawerToggleButtonComponent } from './drawer-toggle-button/drawer-toggle-button.component';
-import { DrawerNavListComponent } from './drawer-nav-list/drawer-nav-list.component';
 import { mergeDeep } from './util';
 import { EndDrawerContentDirective } from './end-drawer-content.directive';
 
@@ -32,10 +30,8 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
 @NgModule({
   declarations: [
     DrawerToggleDirective,
-    DrawerItemComponent,
     DrawerLayoutComponent,
     DrawerToggleButtonComponent,
-    DrawerNavListComponent,
     EndDrawerContentDirective,
   ],
   imports: [
@@ -47,10 +43,8 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
   ],
   exports: [
     DrawerToggleDirective,
-    DrawerItemComponent,
     DrawerLayoutComponent,
     DrawerToggleButtonComponent,
-    DrawerNavListComponent,
     EndDrawerContentDirective,
   ],
   providers: [

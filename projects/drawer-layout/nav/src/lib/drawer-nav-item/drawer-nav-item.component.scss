@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 :host {
   display: flex;
@@ -16,16 +16,23 @@
   outline: none;
 }
 
-mat-icon {
+:host > * {
+  height: 24px;
+}
+
+::ng-deep [ngxDrawerNavIcon] {
   color: $darker-grey;
   margin-right: 16px;
 }
 
+.icon-wrapper:not(:empty) + .icon-placeholder {
+  display: none;
+}
 .icon-placeholder {
-  margin-right: calc(24px + 16px);
+  margin-right: 46px;
 }
 
-.text {
+.label {
   flex: 1 1 auto;
   line-height: 24px;
 }

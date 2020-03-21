@@ -1,8 +1,8 @@
 import { Component, Input, ElementRef } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { DrawerService } from 'ngx-drawer-layout';
 
-import { DrawerNavItem } from '../drawer-nav-item.model';
-import { DrawerService } from '../drawer.service';
+import { DrawerNavItem } from '../drawer-nav-item/drawer-nav-item.component';
 
 /**
  * This component renders all drawer items given by {@link items}.
@@ -33,6 +33,7 @@ export class DrawerNavListComponent {
   }
 
   constructor(private elementRef: ElementRef<HTMLElement>, private drawer: DrawerService) {
+    // TODO: find drawer controller instead
     this.drawerType = this.findDrawerType();
   }
 

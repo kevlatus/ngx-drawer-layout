@@ -7,7 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerLayoutModule } from 'ngx-drawer-layout';
-
+import { DrawerNavModule } from 'ngx-drawer-layout/nav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,7 @@ import { DrawerConfigFormComponent } from './drawer-config-form/drawer-config-fo
       start: { initialOpen: true, initialDisabled: false },
       end: { initialDisabled: false }
     }),
+    DrawerNavModule,
 
     AppRoutingModule,
   ],

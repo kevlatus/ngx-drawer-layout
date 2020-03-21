@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DrawerNavItem } from 'ngx-drawer-layout';
+import { DrawerNavItem } from 'ngx-drawer-layout/nav';
 
 @Component({
   selector: 'app-root',

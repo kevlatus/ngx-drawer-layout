@@ -1,0 +1,14 @@
+<h3 class="mat-h3" *ngIf="!!heading">{{heading}}</h3>
+
+<div>
+  <ngx-drawer-nav-item
+    *ngFor="let item of items"
+    (click)="onItemClicked()"
+    [routerLink]="item.href"
+    routerLinkActive="router-active"
+    [routerLinkActiveOptions]="{exact: item.exact}"
+  >
+    <mat-icon ngxDrawerNavIcon>{{item.icon}}</mat-icon>
+    <div ngxDrawerNavLabel>{{item.text}}</div>
+  </ngx-drawer-nav-item>
+</div>

@@ -166,5 +166,8 @@
       }
     }
   },
-  "defaultProject": "drawer-layout"
+  "defaultProject": "drawer-layout",
+  "cli": {
+    "analytics": false
+  }
 }

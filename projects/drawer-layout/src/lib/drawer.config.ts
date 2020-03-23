@@ -1,32 +1,32 @@
 import { InjectionToken } from '@angular/core';
 
-export interface DrawerConfig {
+export interface DrawerOptions {
   initialDisabled?: boolean;
   initialOpen?: boolean;
   autoDetectMode?: boolean;
 }
 
-export interface DrawerLayoutConfig {
-  start: DrawerConfig;
-  end: DrawerConfig;
+export interface DrawerLayoutOptions {
+  start: DrawerOptions;
+  end: DrawerOptions;
 }
 
-const defaultStartDrawerConfig: DrawerConfig = {
+const defaultStartDrawerOptions: DrawerOptions = {
   autoDetectMode: true,
   initialDisabled: false,
   initialOpen: true,
 };
 
-const defaultEndDrawerConfig: DrawerConfig = {
+const defaultEndDrawerOptions: DrawerOptions = {
   autoDetectMode: false,
   initialDisabled: true,
   initialOpen: false,
 };
 
-export const defaultDrawerLayoutConfig: DrawerLayoutConfig = {
-  start: defaultStartDrawerConfig,
-  end: defaultEndDrawerConfig,
+export const defaultDrawerLayoutOptions: DrawerLayoutOptions = {
+  start: defaultStartDrawerOptions,
+  end: defaultEndDrawerOptions,
 };
 
-export const DRAWER_CONFIG = new InjectionToken<DrawerLayoutConfig>('DRAWER_CONFIG');
-export const PASSED_DRAWER_CONFIG = new InjectionToken<DrawerConfig>('PASSED_DRAWER_CONFIG');
+export const drawerOptionsToken = new InjectionToken<DrawerLayoutOptions>('drawerOptionsToken');
+export const userDrawerOptionsToken = new InjectionToken<DrawerOptions>('userDrawerOptionsToken');

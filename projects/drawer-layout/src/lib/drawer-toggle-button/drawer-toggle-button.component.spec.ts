@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { DrawerToggleButtonComponent } from './drawer-toggle-button.component';
-import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from '../drawer.config';
+import { drawerOptionsToken, defaultDrawerLayoutOptions } from '../drawer.config';
 import { windowFactory } from '../drawer-layout.module';
 
 describe('DrawerToggleButtonComponent', () => {
@@ -19,7 +19,7 @@ describe('DrawerToggleButtonComponent', () => {
       ],
       providers: [
         { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
+        { provide: drawerOptionsToken, useValue: defaultDrawerLayoutOptions },
       ],
       declarations: [DrawerToggleButtonComponent]
     })

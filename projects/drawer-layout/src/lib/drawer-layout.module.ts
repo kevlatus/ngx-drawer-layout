@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 
-import { defaultDrawerLayoutConfig, DrawerLayoutConfig, PASSED_DRAWER_CONFIG, DRAWER_CONFIG } from './drawer.config';
+import { defaultDrawerLayoutOptions, DrawerLayoutOptions, userDrawerOptionsToken, drawerOptionsToken } from './drawer.config';
 import { DrawerService } from './drawer.service';
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
@@ -19,12 +19,12 @@ export function windowFactory(platformId: {}) {
   }
 }
 
-export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutConfig {
+export function configFactory(passedConfig: DrawerLayoutOptions): DrawerLayoutOptions {
   if (!passedConfig) {
-    return defaultDrawerLayoutConfig;
+    return defaultDrawerLayoutOptions;
   }
 
-  return mergeDeep(defaultDrawerLayoutConfig, passedConfig);
+  return mergeDeep(defaultDrawerLayoutOptions, passedConfig);
 }
 
 @NgModule({
@@ -53,15 +53,15 @@ export function configFactory(passedConfig: DrawerLayoutConfig): DrawerLayoutCon
   ]
 })
 export class DrawerLayoutModule {
-  static forRoot(config: DrawerLayoutConfig = defaultDrawerLayoutConfig): ModuleWithProviders<DrawerLayoutModule> {
+  static forRoot(config: DrawerLayoutOptions = defaultDrawerLayoutOptions): ModuleWithProviders<DrawerLayoutModule> {
     return {
       ngModule: DrawerLayoutModule,
       providers: [
-        { provide: PASSED_DRAWER_CONFIG, useValue: config },
+        { provide: userDrawerOptionsToken, useValue: config },
         {
-          provide: DRAWER_CONFIG,
+          provide: drawerOptionsToken,
           useFactory: configFactory,
-          deps: [PASSED_DRAWER_CONFIG],
+          deps: [userDrawerOptionsToken],
         },
       ]
     };

@@ -4,7 +4,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DrawerLayoutComponent } from './drawer-layout.component';
-import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from '../drawer.config';
+import { drawerOptionsToken, defaultDrawerLayoutOptions } from '../drawer.config';
 import { windowFactory } from '../drawer-layout.module';
 
 describe('DrawerLayoutComponent', () => {
@@ -19,7 +19,7 @@ describe('DrawerLayoutComponent', () => {
       ],
       providers: [
         { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
+        { provide: drawerOptionsToken, useValue: defaultDrawerLayoutOptions },
       ],
       declarations: [DrawerLayoutComponent],
     }).compileComponents();

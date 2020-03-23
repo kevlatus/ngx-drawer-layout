@@ -6,7 +6,7 @@
     "start": "ng serve --project=demo-app",
     "watch": "ng build --watch",
     "build": "ng build --prod && npm run copy-files",
-    "test": "ng test drawer-layout",
+    "test": "ng test --project=drawer-layout",
     "lint": "ng lint",
     "copy-files": "cpx LICENSE dist/drawer-layout && cpx README.md dist/drawer-layout"
   },

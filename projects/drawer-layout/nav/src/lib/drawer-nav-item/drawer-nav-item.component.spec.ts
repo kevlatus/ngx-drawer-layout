@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DrawerItemComponent } from './drawer-item.component';
 import { MatIconModule } from '@angular/material/icon';
 
-describe('DrawerItemComponent', () => {
-  let component: DrawerItemComponent;
-  let fixture: ComponentFixture<DrawerItemComponent>;
+import { DrawerNavItemComponent } from './drawer-nav-item.component';
+
+describe('DrawerNavItemComponent', () => {
+  let component: DrawerNavItemComponent;
+  let fixture: ComponentFixture<DrawerNavItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         MatIconModule,
       ],
-      declarations: [DrawerItemComponent]
+      declarations: [DrawerNavItemComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DrawerItemComponent);
+    fixture = TestBed.createComponent(DrawerNavItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

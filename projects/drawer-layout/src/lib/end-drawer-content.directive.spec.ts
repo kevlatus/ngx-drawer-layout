@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { EndDrawerContentDirective } from './end-drawer-content.directive';
 import { DrawerService } from './drawer.service';
-import { DRAWER_CONFIG, defaultDrawerLayoutConfig } from './drawer.config';
+import { drawerOptionsToken, defaultDrawerLayoutOptions } from './drawer.config';
 import { windowFactory } from './drawer-layout.module';
 
 @Component({
@@ -23,7 +23,7 @@ describe('EndDrawerContentDirective', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: DRAWER_CONFIG, useValue: defaultDrawerLayoutConfig },
+        { provide: drawerOptionsToken, useValue: defaultDrawerLayoutOptions },
         DrawerService,
       ],
       declarations: [

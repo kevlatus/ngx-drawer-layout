@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DrawerConfig } from './drawer.config';
+import { DrawerOptions } from './drawer.config';
 import { EventManager } from '@angular/platform-browser';
 
 export class DrawerController {
@@ -31,7 +31,7 @@ export class DrawerController {
     }
   }
 
-  constructor(private window: Window, config: DrawerConfig, eventManager: EventManager) {
+  constructor(private window: Window, config: DrawerOptions, eventManager: EventManager) {
     this.isDisabledSubject.next(config.initialDisabled);
     this.isOpenedSubject.next(config.initialOpen);
 

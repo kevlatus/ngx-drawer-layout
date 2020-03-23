@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
-import { DRAWER_CONFIG, DrawerLayoutConfig } from './drawer.config';
+import { drawerOptionsToken, DrawerLayoutOptions } from './drawer.config';
 import { DrawerController } from './drawer.controller';
 
 /**
@@ -17,7 +17,7 @@ export class DrawerService {
   public readonly end: DrawerController;
 
   constructor(
-    @Inject(DRAWER_CONFIG) config: DrawerLayoutConfig,
+    @Inject(drawerOptionsToken) config: DrawerLayoutOptions,
     @Inject('window') window: any,
     eventManager: EventManager
   ) {

@@ -20,10 +20,10 @@
     ],
     "paths": {
       "ngx-drawer-layout": [
-        "dist/drawer-layout"
+        "dist/ngx-drawer-layout"
       ],
       "ngx-drawer-layout/*": [
-        "dist/drawer-layout/*"
+        "dist/ngx-drawer-layout/*"
       ]
     }
   },

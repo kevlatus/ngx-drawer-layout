@@ -125,38 +125,38 @@
         }
       }
     },
-    "drawer-layout": {
+    "ngx-drawer-layout": {
       "projectType": "library",
-      "root": "projects/drawer-layout",
-      "sourceRoot": "projects/drawer-layout/src",
+      "root": "projects/ngx-drawer-layout",
+      "sourceRoot": "projects/ngx-drawer-layout/src",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/drawer-layout/tsconfig.lib.json",
-            "project": "projects/drawer-layout/ng-package.json"
+            "tsConfig": "projects/ngx-drawer-layout/tsconfig.lib.json",
+            "project": "projects/ngx-drawer-layout/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/drawer-layout/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-drawer-layout/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/drawer-layout/src/test.ts",
-            "tsConfig": "projects/drawer-layout/tsconfig.spec.json",
-            "karmaConfig": "projects/drawer-layout/karma.conf.js"
+            "main": "projects/ngx-drawer-layout/src/test.ts",
+            "tsConfig": "projects/ngx-drawer-layout/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-drawer-layout/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/drawer-layout/tsconfig.lib.json",
-              "projects/drawer-layout/tsconfig.spec.json"
+              "projects/ngx-drawer-layout/tsconfig.lib.json",
+              "projects/ngx-drawer-layout/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -166,7 +166,7 @@
       }
     }
   },
-  "defaultProject": "drawer-layout",
+  "defaultProject": "ngx-drawer-layout",
   "cli": {
     "analytics": false
   }

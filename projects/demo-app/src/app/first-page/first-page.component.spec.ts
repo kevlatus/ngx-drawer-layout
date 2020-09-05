@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerLayoutModule } from 'ngx-drawer-layout';
 
 import { FirstPageComponent } from './first-page.component';
@@ -34,6 +35,7 @@ describe('FirstPageComponent', () => {
         TestComponent,
       ],
       imports: [
+        BrowserAnimationsModule,
         DrawerLayoutModule,
         FormsModule,
         MatButtonToggleModule,
@@ -45,8 +47,8 @@ describe('FirstPageComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance.firstPage;
     fixture.detectChanges();
+    component = fixture.componentInstance.firstPage;
   });
 
   it('should create', () => {

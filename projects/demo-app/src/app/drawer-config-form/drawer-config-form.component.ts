@@ -15,7 +15,7 @@ export class DrawerConfigFormComponent implements OnInit {
   @Input() public drawer: DrawerController;
 
   ngOnInit(): void {
-    this.drawer.mode$
+    this.drawer?.mode$
       .pipe(
         take(1),
         tap((mode) => (this.mode = mode))
@@ -32,6 +32,6 @@ export class DrawerConfigFormComponent implements OnInit {
   }
 
   onModeChange(event: DrawerMode) {
-    this.drawer.setMode(event);
+    this.drawer?.setMode(event);
   }
 }

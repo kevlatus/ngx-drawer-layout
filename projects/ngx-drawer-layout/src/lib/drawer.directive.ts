@@ -7,6 +7,7 @@ import { DrawerService, DrawerServiceImpl } from './drawer.service';
 @Directive({
   selector: '[ngxDrawer]',
   providers: [{ provide: DrawerController, useClass: DrawerControllerImpl }],
+  exportAs: 'ngxDrawer',
 })
 export class DrawerDirective implements OnInit {
   private get _position(): DrawerPosition {
@@ -18,10 +19,13 @@ export class DrawerDirective implements OnInit {
   @Input() public initialOpen: boolean;
   @Input() public initialMode: DrawerMode = 'responsive';
 
-  constructor(private service: DrawerService, private ctrl: DrawerController) {}
+  constructor(
+    private service: DrawerService,
+    public readonly controller: DrawerController
+  ) {}
 
   ngOnInit(): void {
-    (this.ctrl as DrawerControllerImpl).init({
+    (this.controller as DrawerControllerImpl).init({
       disabled: this.initialDisabled !== undefined,
       open: this.initialOpen !== undefined,
       mode: this.initialMode,
@@ -29,7 +33,7 @@ export class DrawerDirective implements OnInit {
 
     (this.service as DrawerServiceImpl).registerDrawer(
       this._position,
-      this.ctrl
+      this.controller
     );
   }
 }

@@ -6,6 +6,7 @@
   [hasBackdrop]="hasBackdrop"
   [autosize]="autosize"
   (backdropClick)="onBackdropClick()"
+  [style.height]="contentHeight"
 >
   <mat-drawer
     *ngIf="service.hasDrawer('start')"
@@ -27,7 +28,7 @@
     <ng-content select="[ngxDrawer='end']"></ng-content>
   </mat-drawer>
 
-  <mat-drawer-content [style.height]="contentHeight">
+  <mat-drawer-content>
     <ng-content select="[ngxDrawerLayoutContent]"></ng-content>
   </mat-drawer-content>
 </mat-drawer-container>

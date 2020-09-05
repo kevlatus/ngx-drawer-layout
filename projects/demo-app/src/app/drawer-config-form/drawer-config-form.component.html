@@ -1,6 +1,6 @@
 <div class="root">
   <mat-slide-toggle
-    [checked]="drawer.isDisabled$ | async"
+    [checked]="drawer?.isDisabled$ | async"
     (change)="toggleEnabled($event)"
   >
     <span>Drawer disabled</span>
@@ -9,7 +9,7 @@
   <mat-slide-toggle [(ngModel)]="openOnEnable">Open on enable</mat-slide-toggle>
 
   <mat-slide-toggle
-    [checked]="drawer.isOpen$ | async"
+    [checked]="drawer?.isOpen$ | async"
     (change)="drawer.toggle()"
   >
     <span>Drawer open</span>

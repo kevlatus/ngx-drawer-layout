@@ -35,7 +35,7 @@ export class DrawerLayoutComponent implements OnInit {
   @ViewChild('header', { static: true })
   private headerElement: ElementRef<HTMLDivElement>;
 
-  contentHeight = '100vh';
+  contentHeight = '100%';
 
   /**
    * {@link MatDrawerContainer.autosize}
@@ -80,7 +80,7 @@ export class DrawerLayoutComponent implements OnInit {
     setTimeout(() => {
       if (this.headerElement) {
         const height = this.headerElement.nativeElement.offsetHeight;
-        this.contentHeight = `calc(100vh - ${height}px)`;
+        this.contentHeight = `calc(100% - ${height}px)`;
       }
     });
   }

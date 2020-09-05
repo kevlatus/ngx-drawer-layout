@@ -1,5 +1,5 @@
 import { Component, DebugElement, PLATFORM_ID } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,24 +24,26 @@ describe('DrawerToggleDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let buttonEl: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, MatSidenavModule],
-      providers: [
-        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-      ],
-      declarations: [
-        DrawerDirective,
-        DrawerLayoutComponent,
-        DrawerToggleDirective,
-        TestComponent,
-      ],
-    });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [BrowserAnimationsModule, MatSidenavModule],
+        providers: [
+          { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
+        ],
+        declarations: [
+          DrawerDirective,
+          DrawerLayoutComponent,
+          DrawerToggleDirective,
+          TestComponent,
+        ],
+      });
 
-    fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
-    buttonEl = fixture.debugElement.query(By.css('button'));
-  }));
+      fixture = TestBed.createComponent(TestComponent);
+      component = fixture.componentInstance;
+      buttonEl = fixture.debugElement.query(By.css('button'));
+    })
+  );
 
   it('clicking a button', () => {
     fixture.detectChanges();

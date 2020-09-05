@@ -1,5 +1,5 @@
 import { PLATFORM_ID } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,15 +10,17 @@ describe('DrawerLayoutComponent', () => {
   let component: DrawerLayoutComponent;
   let fixture: ComponentFixture<DrawerLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, MatSidenavModule],
-      providers: [
-        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-      ],
-      declarations: [DrawerLayoutComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [BrowserAnimationsModule, MatSidenavModule],
+        providers: [
+          { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
+        ],
+        declarations: [DrawerLayoutComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DrawerLayoutComponent);

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -27,23 +27,25 @@ describe('FirstPageComponent', () => {
   let component: FirstPageComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        DrawerConfigFormComponent,
-        FirstPageComponent,
-        TestComponent,
-      ],
-      imports: [
-        BrowserAnimationsModule,
-        DrawerLayoutModule,
-        FormsModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatSlideToggleModule,
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          DrawerConfigFormComponent,
+          FirstPageComponent,
+          TestComponent,
+        ],
+        imports: [
+          BrowserAnimationsModule,
+          DrawerLayoutModule,
+          FormsModule,
+          MatButtonToggleModule,
+          MatCardModule,
+          MatSlideToggleModule,
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

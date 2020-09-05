@@ -1,14 +1,8 @@
-name: Test
+name: Coverage
 on:
   push:
     branches:
       - main
-      - v*
-
-  pull_request:
-    branches:
-      - main
-      - v*
 
 jobs:
   test:
@@ -16,7 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
 
       - uses: actions/cache@v2
         name: retrieve npm cache
@@ -25,6 +19,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - run: npm install
 
       - name: run linter
@@ -34,7 +29,9 @@ jobs:
         run: npm run build -- --prod
 
       - name: run library tests
-        run: npm run test
+        run: npm run test -- --coverage
 
-      - name: run demo tests
-        run: npm run test:demo
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

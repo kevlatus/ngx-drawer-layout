@@ -1,22 +1,16 @@
-name: Test
+name: Publish v10
 on:
   push:
-    branches:
-      - main
-      - v*
-
-  pull_request:
-    branches:
-      - main
-      - v*
+    tags:
+      - v10*
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
 
       - uses: actions/cache@v2
         name: retrieve npm cache
@@ -38,3 +32,18 @@ jobs:
 
       - name: run demo tests
         run: npm run test:demo
+
+      - name: copy README and LICENSE
+        run: |
+          cp LICENSE dist/ngx-drawer-layout
+          cp README.md dist/ngx-drawer-layout
+
+      - uses: actions/setup-node@master
+        with:
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: publish to npm
+        working-directory: ./dist/ngx-drawer-layout
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

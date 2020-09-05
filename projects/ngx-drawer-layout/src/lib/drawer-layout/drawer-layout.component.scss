@@ -21,4 +21,5 @@ mat-drawer.mode-side {
 
 mat-drawer-container {
   background: transparent;
+  transition: background-color 0.3s ease-out;
 }

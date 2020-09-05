@@ -1,5 +1,6 @@
 :host {
-  height: 100vh;
+  display: block;
+  height: 100%;
 }
 
 mat-drawer {
@@ -16,10 +17,6 @@ mat-drawer[position='end'] {
 
 mat-drawer.mode-side {
   background: transparent;
-}
-
-mat-drawer-content {
-  height: 100vh;
 }
 
 mat-drawer-container {

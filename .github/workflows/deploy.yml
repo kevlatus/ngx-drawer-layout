@@ -26,11 +26,11 @@ jobs:
       - name: run linter
         run: npm run lint
 
-      - name: run library tests
-        run: npm run test -- --coverage
-
       - name: build library
         run: npm run build -- --prod
+
+      - name: run library tests
+        run: npm run test -- --coverage
 
       #      - name: run demo tests
       #        run: npm run test:demo

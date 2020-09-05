@@ -102,7 +102,7 @@ export class DrawerControllerImpl implements DrawerController, OnDestroy {
   }
 
   constructor(
-    @Inject("window") private window: Window,
+    @Inject("window") private window: any,
     private eventManager: EventManager
   ) {
     this._modeCtrl = new DrawerModeController(window, eventManager);

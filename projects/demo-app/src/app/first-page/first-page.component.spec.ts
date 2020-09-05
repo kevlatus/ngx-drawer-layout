@@ -1,3 +1,4 @@
+import { Component, ViewChild } from "@angular/core";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
@@ -8,26 +9,43 @@ import { DrawerLayoutModule } from "ngx-drawer-layout";
 import { FirstPageComponent } from "./first-page.component";
 import { DrawerConfigFormComponent } from "../drawer-config-form/drawer-config-form.component";
 
+@Component({
+  template: `
+    <ngx-drawer-layout>
+      <div ngxDrawer></div>
+      <app-first-page ngxDrawerLayoutContent></app-first-page>
+    </ngx-drawer-layout>
+  `,
+})
+class TestComponent {
+  @ViewChild(FirstPageComponent)
+  firstPage: FirstPageComponent;
+}
+
 describe("FirstPageComponent", () => {
   let component: FirstPageComponent;
-  let fixture: ComponentFixture<FirstPageComponent>;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DrawerConfigFormComponent, FirstPageComponent],
+      declarations: [
+        DrawerConfigFormComponent,
+        FirstPageComponent,
+        TestComponent,
+      ],
       imports: [
+        DrawerLayoutModule,
         FormsModule,
         MatButtonToggleModule,
         MatCardModule,
         MatSlideToggleModule,
-        DrawerLayoutModule,
       ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FirstPageComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.componentInstance.firstPage;
     fixture.detectChanges();
   });
 

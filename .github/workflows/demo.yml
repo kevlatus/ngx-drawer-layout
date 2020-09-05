@@ -1,13 +1,9 @@
-name: Test
+name: Demo
 on:
   push:
     branches:
-      - main
-      - v*
-
-  pull_request:
-    branches:
-      - main
+      - demo
+    tags:
       - v*
 
 jobs:
@@ -16,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
 
       - uses: actions/cache@v2
         name: retrieve npm cache
@@ -25,6 +21,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - run: npm install
 
       - name: run linter
@@ -38,3 +35,13 @@ jobs:
 
       - name: run demo tests
         run: npm run test:demo
+
+      - name: build demo
+        run: npm run build -- --prod --project=demo-app
+
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist/demo-app

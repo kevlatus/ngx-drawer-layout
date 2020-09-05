@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerLayoutModule } from 'ngx-drawer-layout';
 
 import { DrawerConfigFormComponent } from './drawer-config-form.component';
@@ -10,8 +11,11 @@ import { DrawerConfigFormComponent } from './drawer-config-form.component';
 @Component({
   template: `
     <ngx-drawer-layout>
-      <div ngxDrawer></div>
-      <app-drawer-config-form ngxDrawerLayoutContent></app-drawer-config-form>
+      <div ngxDrawer #drawer="ngxDrawer"></div>
+      <app-drawer-config-form
+        ngxDrawerLayoutContent
+        [drawer]="drawer.controller"
+      ></app-drawer-config-form>
     </ngx-drawer-layout>
   `,
 })
@@ -28,6 +32,7 @@ describe('DrawerConfigFormComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DrawerConfigFormComponent, TestComponent],
       imports: [
+        BrowserAnimationsModule,
         DrawerLayoutModule,
         FormsModule,
         MatButtonToggleModule,
@@ -38,8 +43,8 @@ describe('DrawerConfigFormComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance.configForm;
     fixture.detectChanges();
+    component = fixture.componentInstance.configForm;
   });
 
   it('should create', () => {

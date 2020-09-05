@@ -1,6 +1,6 @@
 {
   "name": "ngx-drawer-layout",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "Angular components for creating a Material Design drawer layout.",
   "author": {
     "name": "Kevin Latusinski",
@@ -20,9 +20,12 @@
     "material",
     "material design"
   ],
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
-    "@angular/common": "9",
-    "@angular/core": "9",
-    "@angular/material": "9"
+    "@angular/common": "10",
+    "@angular/core": "10",
+    "@angular/material": "10"
   }
 }

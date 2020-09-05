@@ -1,5 +1,7 @@
 import { Component, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { windowFactory } from './drawer-layout.module';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
@@ -22,6 +24,7 @@ describe('DrawerDirective', () => {
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
       declarations: [DrawerDirective, DrawerLayoutComponent, TestComponent],
+      imports: [BrowserAnimationsModule, MatSidenavModule],
       providers: [
         { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
       ],

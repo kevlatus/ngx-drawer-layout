@@ -1,25 +1,20 @@
-import { PLATFORM_ID } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PLATFORM_ID } from "@angular/core";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { DrawerLayoutComponent } from './drawer-layout.component';
-import { drawerOptionsToken, defaultDrawerLayoutOptions } from '../drawer.config';
-import { windowFactory } from '../drawer-layout.module';
+import { DrawerLayoutComponent } from "./drawer-layout.component";
+import { windowFactory } from "../drawer-layout.module";
 
-describe('DrawerLayoutComponent', () => {
+describe("DrawerLayoutComponent", () => {
   let component: DrawerLayoutComponent;
   let fixture: ComponentFixture<DrawerLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        MatSidenavModule,
-      ],
+      imports: [BrowserAnimationsModule, MatSidenavModule],
       providers: [
-        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: drawerOptionsToken, useValue: defaultDrawerLayoutOptions },
+        { provide: "window", useFactory: windowFactory, deps: [PLATFORM_ID] },
       ],
       declarations: [DrawerLayoutComponent],
     }).compileComponents();
@@ -31,7 +26,7 @@ describe('DrawerLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

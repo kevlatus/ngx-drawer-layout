@@ -3,11 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
 import { DrawerToggleDirective } from "./drawer-toggle.directive";
-import { DrawerServiceImpl } from "./drawer.service";
-import {
-  drawerOptionsToken,
-  defaultDrawerLayoutOptions,
-} from "./drawer.config";
+import { DrawerService, DrawerServiceImpl } from "./drawer.service";
 import { windowFactory } from "./drawer-layout.module";
 
 @Component({
@@ -24,8 +20,7 @@ describe("DrawerToggleDirective", () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: "window", useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: drawerOptionsToken, useValue: defaultDrawerLayoutOptions },
-        DrawerServiceImpl,
+        { provide: DrawerService, useClass: DrawerServiceImpl },
       ],
       declarations: [TestDrawerToggleComponent, DrawerToggleDirective],
     });

@@ -2,8 +2,10 @@
   <h3>Settings</h3>
 
   <h4>Start Drawer (left)</h4>
-  <app-drawer-config-form [drawer]="drawer.start"></app-drawer-config-form>
+  <app-drawer-config-form [drawer]="drawer"></app-drawer-config-form>
 
   <h4>End Drawer (right)</h4>
-  <app-drawer-config-form [drawer]="drawer.end" [(mode)]="endMode" [canToggleMode]="true"></app-drawer-config-form>
+  <app-drawer-config-form
+    [drawer]="drawer.getDrawer('end')"
+  ></app-drawer-config-form>
 </mat-card>

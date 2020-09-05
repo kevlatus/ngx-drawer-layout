@@ -1,18 +1,23 @@
 <ngx-drawer-layout>
-  <mat-toolbar color="primary" ngxDrawerAppHeader>
-    <ngx-drawer-toggle-button></ngx-drawer-toggle-button>
+  <mat-toolbar color="primary" ngxDrawerLayoutHeader>
+    <button mat-icon-button ngxDrawerToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
     <div>NGX Drawer Layout Demo</div>
   </mat-toolbar>
 
-  <div ngxDrawerContent>
-    <ngx-drawer-nav-list heading="Navigation" [items]="items"></ngx-drawer-nav-list>
-  </div>
+  <ngx-drawer-nav-list
+    ngxDrawer
+    initialOpen
+    heading="Navigation"
+    [items]="items"
+  ></ngx-drawer-nav-list>
 
-  <div ngxEndDrawerContent>
+  <div ngxDrawer="end" initialMode="over" style="width: 256px;">
     <div style="padding: 16px;">Yo</div>
   </div>
 
-  <div ngxDrawerAppContent>
+  <div ngxDrawerLayoutContent>
     <router-outlet></router-outlet>
   </div>
 </ngx-drawer-layout>

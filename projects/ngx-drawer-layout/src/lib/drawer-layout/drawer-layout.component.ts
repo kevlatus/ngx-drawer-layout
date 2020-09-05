@@ -1,25 +1,41 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from "@angular/core";
+import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
+import { take, tap, filter } from "rxjs/operators";
 
-import { DrawerService } from '../drawer.service';
-import { take, tap, filter } from 'rxjs/operators';
+import { drawerPositions } from "../drawer.models";
+import { DrawerService, DrawerServiceImpl } from "../drawer.service";
 
 /**
  * Component, which allows for rendering a typical Material Design drawer layout.
  * It is supposed to be used as the top most component of your applications DOM tree, because
  * it takes up the whole window space.
  * In order to manipulate the state of this layout and the corresponding drawer use
- * {@link DrawerService}.
+ * {@link DrawerServiceImpl}.
  */
 @Component({
-  selector: 'ngx-drawer-layout',
-  templateUrl: './drawer-layout.component.html',
-  styleUrls: ['./drawer-layout.component.scss']
+  selector: "ngx-drawer-layout",
+  templateUrl: "./drawer-layout.component.html",
+  styleUrls: ["./drawer-layout.component.scss"],
+  providers: [
+    {
+      provide: DrawerService,
+      useClass: DrawerServiceImpl,
+    },
+  ],
 })
 export class DrawerLayoutComponent implements OnInit {
-  @ViewChild('header', { static: true })
+  @ViewChild("header", { static: true })
   private headerElement: ElementRef<HTMLDivElement>;
 
-  contentHeight = '100vh';
+  contentHeight = "100vh";
 
   /**
    * {@link MatDrawerContainer.autosize}
@@ -41,18 +57,22 @@ export class DrawerLayoutComponent implements OnInit {
    */
   @Output() public backdropClicked = new EventEmitter<void>();
 
-  constructor(public drawer: DrawerService) {
-  }
+  constructor(public service: DrawerService) {}
 
   onBackdropClick() {
     this.backdropClicked.emit();
 
-    for (const drawer of [this.drawer.start, this.drawer.end]) {
-      drawer.mode$.pipe(
-        take(1),
-        filter(mode => mode === 'over'),
-        tap(() => drawer.close()),
-      ).subscribe();
+    for (const position of drawerPositions) {
+      const drawer = this.service.getDrawer(position);
+      if (!!drawer) {
+        drawer.matMode$
+          .pipe(
+            take(1),
+            filter((mode) => mode === "over" || mode === "push"),
+            tap(() => drawer.close())
+          )
+          .subscribe();
+      }
     }
   }
 

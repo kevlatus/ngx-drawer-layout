@@ -1,20 +1,22 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from "@angular/core";
 
-import { DrawerService } from './drawer.service';
+import { DrawerPosition } from "./drawer.models";
+import { DrawerService } from "./drawer.service";
 
 /**
  * Directive, which listens for click events on the host element. If a click event fires,
  * the opened state of the drawer is toggled.
  */
 @Directive({
-  selector: '[ngxDrawerToggle]'
+  selector: "[ngxDrawerToggle]",
 })
 export class DrawerToggleDirective {
-  constructor(public drawer: DrawerService) {
-  }
+  @Input("ngxDrawerToggle") public position: DrawerPosition;
 
-  @HostListener('click')
+  constructor(public drawer: DrawerService) {}
+
+  @HostListener("click")
   onClick() {
-    this.drawer.toggle();
+    this.drawer.getDrawer(this.position || "start").toggle();
   }
 }

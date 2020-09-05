@@ -1,16 +1,28 @@
 <div class="root">
-  <mat-slide-toggle [checked]="drawer.isDisabled$ | async" (change)="toggleEnabled($event)">
+  <mat-slide-toggle
+    [checked]="drawer.isDisabled$ | async"
+    (change)="toggleEnabled($event)"
+  >
     <span>Drawer disabled</span>
   </mat-slide-toggle>
 
   <mat-slide-toggle [(ngModel)]="openOnEnable">Open on enable</mat-slide-toggle>
 
-  <mat-slide-toggle [checked]="drawer.isOpened$ | async" (change)="drawer.toggle()">
+  <mat-slide-toggle
+    [checked]="drawer.isOpen$ | async"
+    (change)="drawer.toggle()"
+  >
     <span>Drawer open</span>
   </mat-slide-toggle>
 
-  <mat-button-toggle-group name="drawerMode" [value]="mode" (valueChange)="onModeChange($event)" *ngIf="canToggleMode">
+  <mat-button-toggle-group
+    name="drawerMode"
+    [value]="mode"
+    (valueChange)="onModeChange($event)"
+  >
     <mat-button-toggle value="over">over</mat-button-toggle>
     <mat-button-toggle value="side">side</mat-button-toggle>
+    <mat-button-toggle value="push">push</mat-button-toggle>
+    <mat-button-toggle value="responsive">responsive</mat-button-toggle>
   </mat-button-toggle-group>
 </div>

@@ -1,38 +1,52 @@
 import { Component, DebugElement, PLATFORM_ID } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DrawerToggleDirective } from './drawer-toggle.directive';
-import { DrawerService, DrawerServiceImpl } from './drawer.service';
 import { windowFactory } from './drawer-layout.module';
+import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
+import { DrawerDirective } from './drawer.directive';
 
 @Component({
-  template: ` <button ngxDrawerToggle>Test</button>`,
+  template: `
+    <ngx-drawer-layout>
+      <div ngxDrawer></div>
+      <button ngxDrawerToggle ngxDrawerLayoutContent>Test</button>
+    </ngx-drawer-layout>
+  `,
 })
-class TestDrawerToggleComponent {}
+class TestComponent {}
 
 describe('DrawerToggleDirective', () => {
-  let component: TestDrawerToggleComponent;
-  let fixture: ComponentFixture<TestDrawerToggleComponent>;
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
   let buttonEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [BrowserAnimationsModule, MatSidenavModule],
       providers: [
         { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
-        { provide: DrawerService, useClass: DrawerServiceImpl },
       ],
-      declarations: [TestDrawerToggleComponent, DrawerToggleDirective],
+      declarations: [
+        DrawerDirective,
+        DrawerLayoutComponent,
+        DrawerToggleDirective,
+        TestComponent,
+      ],
     });
 
-    fixture = TestBed.createComponent(TestDrawerToggleComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     buttonEl = fixture.debugElement.query(By.css('button'));
   }));
 
   it('clicking a button', () => {
+    fixture.detectChanges();
     buttonEl.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(true); // TODO
+    expect(true);
   });
 });

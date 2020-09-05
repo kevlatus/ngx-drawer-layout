@@ -1,12 +1,12 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { MatSlideToggleChange } from "@angular/material/slide-toggle";
-import { DrawerController, DrawerMode } from "ngx-drawer-layout";
-import { take, tap } from "rxjs/operators";
+import { Component, Input, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { DrawerController, DrawerMode } from 'ngx-drawer-layout';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
-  selector: "app-drawer-config-form",
-  templateUrl: "./drawer-config-form.component.html",
-  styleUrls: ["./drawer-config-form.component.scss"],
+  selector: 'app-drawer-config-form',
+  templateUrl: './drawer-config-form.component.html',
+  styleUrls: ['./drawer-config-form.component.scss'],
 })
 export class DrawerConfigFormComponent implements OnInit {
   openOnEnable = true;

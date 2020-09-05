@@ -6,12 +6,12 @@ import {
   OnInit,
   Output,
   ViewChild,
-} from "@angular/core";
-import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
-import { take, tap, filter } from "rxjs/operators";
+} from '@angular/core';
+import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
+import { take, tap, filter } from 'rxjs/operators';
 
-import { drawerPositions } from "../drawer.models";
-import { DrawerService, DrawerServiceImpl } from "../drawer.service";
+import { drawerPositions } from '../drawer.models';
+import { DrawerService, DrawerServiceImpl } from '../drawer.service';
 
 /**
  * Component, which allows for rendering a typical Material Design drawer layout.
@@ -21,9 +21,9 @@ import { DrawerService, DrawerServiceImpl } from "../drawer.service";
  * {@link DrawerServiceImpl}.
  */
 @Component({
-  selector: "ngx-drawer-layout",
-  templateUrl: "./drawer-layout.component.html",
-  styleUrls: ["./drawer-layout.component.scss"],
+  selector: 'ngx-drawer-layout',
+  templateUrl: './drawer-layout.component.html',
+  styleUrls: ['./drawer-layout.component.scss'],
   providers: [
     {
       provide: DrawerService,
@@ -32,10 +32,10 @@ import { DrawerService, DrawerServiceImpl } from "../drawer.service";
   ],
 })
 export class DrawerLayoutComponent implements OnInit {
-  @ViewChild("header", { static: true })
+  @ViewChild('header', { static: true })
   private headerElement: ElementRef<HTMLDivElement>;
 
-  contentHeight = "100vh";
+  contentHeight = '100vh';
 
   /**
    * {@link MatDrawerContainer.autosize}
@@ -68,7 +68,7 @@ export class DrawerLayoutComponent implements OnInit {
         drawer.matMode$
           .pipe(
             take(1),
-            filter((mode) => mode === "over" || mode === "push"),
+            filter((mode) => mode === 'over' || mode === 'push'),
             tap(() => drawer.close())
           )
           .subscribe();

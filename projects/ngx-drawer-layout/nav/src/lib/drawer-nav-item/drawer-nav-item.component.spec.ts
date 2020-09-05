@@ -9,12 +9,9 @@ describe('DrawerNavItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MatIconModule,
-      ],
-      declarations: [DrawerNavItemComponent]
-    })
-      .compileComponents();
+      imports: [MatIconModule],
+      declarations: [DrawerNavItemComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

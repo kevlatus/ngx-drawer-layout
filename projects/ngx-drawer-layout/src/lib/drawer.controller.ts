@@ -1,9 +1,9 @@
-import { Inject, Injectable, OnDestroy } from "@angular/core";
-import { EventManager } from "@angular/platform-browser";
-import { BehaviorSubject, Observable, combineLatest, Subject } from "rxjs";
-import { distinctUntilChanged, map } from "rxjs/operators";
+import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
+import { BehaviorSubject, Observable, combineLatest, Subject } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
-import { DrawerMode, MatDrawerMode } from "./drawer.models";
+import { DrawerMode, MatDrawerMode } from './drawer.models';
 
 export abstract class DrawerController {
   readonly isOpen$: Observable<boolean>;
@@ -39,7 +39,7 @@ class DrawerModeController {
     .pipe(distinctUntilChanged());
 
   private _detectMode(): MatDrawerMode {
-    return this.window.innerWidth > 960 ? "side" : "over";
+    return this.window.innerWidth > 960 ? 'side' : 'over';
   }
 
   private _onResize = () => {
@@ -50,7 +50,7 @@ class DrawerModeController {
 
   public setMode(mode: DrawerMode) {
     this._mode.next(mode);
-    if (mode !== "responsive") {
+    if (mode !== 'responsive') {
       this._matMode.next(mode);
       if (this._unregisterHandler) {
         this._unregisterHandler();
@@ -59,8 +59,8 @@ class DrawerModeController {
     } else {
       this._matMode.next(this._detectMode());
       this._unregisterHandler = this.events.addGlobalEventListener(
-        "window",
-        "resize",
+        'window',
+        'resize',
         this._onResize
       );
     }
@@ -102,7 +102,7 @@ export class DrawerControllerImpl implements DrawerController, OnDestroy {
   }
 
   constructor(
-    @Inject("window") private window: any,
+    @Inject('window') private window: any,
     private eventManager: EventManager
   ) {
     this._modeCtrl = new DrawerModeController(window, eventManager);

@@ -1,11 +1,11 @@
-import { Component, ViewChild } from "@angular/core";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { FormsModule } from "@angular/forms";
-import { MatButtonToggleModule } from "@angular/material/button-toggle";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { DrawerLayoutModule } from "ngx-drawer-layout";
+import { Component, ViewChild } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DrawerLayoutModule } from 'ngx-drawer-layout';
 
-import { DrawerConfigFormComponent } from "./drawer-config-form.component";
+import { DrawerConfigFormComponent } from './drawer-config-form.component';
 
 @Component({
   template: `
@@ -20,7 +20,7 @@ class TestComponent {
   configForm: DrawerConfigFormComponent;
 }
 
-describe("DrawerConfigFormComponent", () => {
+describe('DrawerConfigFormComponent', () => {
   let component: DrawerConfigFormComponent;
   let fixture: ComponentFixture<TestComponent>;
 
@@ -42,7 +42,7 @@ describe("DrawerConfigFormComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

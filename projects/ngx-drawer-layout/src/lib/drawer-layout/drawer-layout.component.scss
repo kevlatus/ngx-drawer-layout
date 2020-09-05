@@ -10,7 +10,7 @@ mat-drawer {
   border-left: env(safe-area-inset-left) solid transparent;
 }
 
-mat-drawer[position="end"] {
+mat-drawer[position='end'] {
   min-width: 0;
 }
 

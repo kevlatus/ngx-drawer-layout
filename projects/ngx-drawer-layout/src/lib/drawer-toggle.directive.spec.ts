@@ -1,17 +1,17 @@
-import { Component, DebugElement, PLATFORM_ID } from "@angular/core";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
+import { Component, DebugElement, PLATFORM_ID } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
-import { DrawerToggleDirective } from "./drawer-toggle.directive";
-import { DrawerService, DrawerServiceImpl } from "./drawer.service";
-import { windowFactory } from "./drawer-layout.module";
+import { DrawerToggleDirective } from './drawer-toggle.directive';
+import { DrawerService, DrawerServiceImpl } from './drawer.service';
+import { windowFactory } from './drawer-layout.module';
 
 @Component({
   template: ` <button ngxDrawerToggle>Test</button>`,
 })
 class TestDrawerToggleComponent {}
 
-describe("DrawerToggleDirective", () => {
+describe('DrawerToggleDirective', () => {
   let component: TestDrawerToggleComponent;
   let fixture: ComponentFixture<TestDrawerToggleComponent>;
   let buttonEl: DebugElement;
@@ -19,7 +19,7 @@ describe("DrawerToggleDirective", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: "window", useFactory: windowFactory, deps: [PLATFORM_ID] },
+        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
         { provide: DrawerService, useClass: DrawerServiceImpl },
       ],
       declarations: [TestDrawerToggleComponent, DrawerToggleDirective],
@@ -27,11 +27,11 @@ describe("DrawerToggleDirective", () => {
 
     fixture = TestBed.createComponent(TestDrawerToggleComponent);
     component = fixture.componentInstance;
-    buttonEl = fixture.debugElement.query(By.css("button"));
+    buttonEl = fixture.debugElement.query(By.css('button'));
   }));
 
-  it("clicking a button", () => {
-    buttonEl.triggerEventHandler("click", null);
+  it('clicking a button', () => {
+    buttonEl.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(true); // TODO
   });

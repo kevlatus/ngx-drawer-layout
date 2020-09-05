@@ -1,9 +1,9 @@
-import { Component, PLATFORM_ID, ViewChild } from "@angular/core";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Component, PLATFORM_ID, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { windowFactory } from "./drawer-layout.module";
-import { DrawerLayoutComponent } from "./drawer-layout/drawer-layout.component";
-import { DrawerDirective } from "./drawer.directive";
+import { windowFactory } from './drawer-layout.module';
+import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
+import { DrawerDirective } from './drawer.directive';
 
 @Component({
   template: `
@@ -17,19 +17,19 @@ class TestComponent {
   drawer: DrawerDirective;
 }
 
-describe("DrawerDirective", () => {
+describe('DrawerDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
       declarations: [DrawerDirective, DrawerLayoutComponent, TestComponent],
       providers: [
-        { provide: "window", useFactory: windowFactory, deps: [PLATFORM_ID] },
+        { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
       ],
     }).createComponent(TestComponent);
     fixture.detectChanges();
   });
 
-  it("should create an instance", () => {
+  it('should create an instance', () => {
     const directive = fixture.componentInstance.drawer;
     expect(directive).toBeTruthy();
   });

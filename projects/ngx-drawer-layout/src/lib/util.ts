@@ -9,10 +9,10 @@
 export function mergeDeep<T1, T2>(objA: T1, objB: T2): T1 & T2;
 export function mergeDeep(...objects: {}[]): {};
 export function mergeDeep(...objects: {}[]): {} {
-  const isObject = obj => obj && typeof obj === 'object';
+  const isObject = (obj) => obj && typeof obj === 'object';
 
   return objects.reduce((prev, obj) => {
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
       const pVal = prev[key];
       const oVal = obj[key];
 

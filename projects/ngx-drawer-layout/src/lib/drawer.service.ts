@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { DrawerController } from "./drawer.controller";
-import { DrawerMode, DrawerPosition, MatDrawerMode } from "./drawer.models";
+import { DrawerController } from './drawer.controller';
+import { DrawerMode, DrawerPosition, MatDrawerMode } from './drawer.models';
 
 export abstract class DrawerService implements DrawerController {
   abstract readonly isDisabled$: Observable<boolean>;
@@ -39,7 +39,7 @@ export class DrawerServiceImpl implements DrawerService {
   };
 
   private _getDefaultDrawer(): DrawerController {
-    return this.getDrawer("start");
+    return this.getDrawer('start');
   }
 
   public registerDrawer(

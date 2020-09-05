@@ -1,12 +1,12 @@
-import { MatDrawerMode } from "@angular/material/sidenav";
+import { MatDrawerMode } from '@angular/material/sidenav';
 
-export type DrawerMode = MatDrawerMode | "responsive";
+export type DrawerMode = MatDrawerMode | 'responsive';
 
-export { MatDrawerMode } from "@angular/material/sidenav";
+export { MatDrawerMode } from '@angular/material/sidenav';
 
-export type DrawerPosition = "start" | "end";
+export type DrawerPosition = 'start' | 'end';
 
 export const drawerPositions: readonly DrawerPosition[] = [
-  "start",
-  "end",
+  'start',
+  'end',
 ] as const;

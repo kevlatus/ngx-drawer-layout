@@ -1,7 +1,7 @@
-import { DrawerControllerImpl } from "./drawer.controller";
+import { DrawerControllerImpl } from './drawer.controller';
 
-describe("Drawer", () => {
-  it("should create an instance", () => {
+describe('Drawer', () => {
+  it('should create an instance', () => {
     expect(true).toBeTruthy();
   });
 });

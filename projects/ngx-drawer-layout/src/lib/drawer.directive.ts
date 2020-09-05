@@ -1,22 +1,22 @@
-import { Directive, Input, OnInit } from "@angular/core";
+import { Directive, Input, OnInit } from '@angular/core';
 
-import { DrawerController, DrawerControllerImpl } from "./drawer.controller";
-import { DrawerMode, DrawerPosition } from "./drawer.models";
-import { DrawerService, DrawerServiceImpl } from "./drawer.service";
+import { DrawerController, DrawerControllerImpl } from './drawer.controller';
+import { DrawerMode, DrawerPosition } from './drawer.models';
+import { DrawerService, DrawerServiceImpl } from './drawer.service';
 
 @Directive({
-  selector: "[ngxDrawer]",
+  selector: '[ngxDrawer]',
   providers: [{ provide: DrawerController, useClass: DrawerControllerImpl }],
 })
 export class DrawerDirective implements OnInit {
   private get _position(): DrawerPosition {
-    return this.position || "start";
+    return this.position || 'start';
   }
 
-  @Input("ngxDrawer") public position: DrawerPosition;
+  @Input('ngxDrawer') public position: DrawerPosition;
   @Input() public initialDisabled: boolean;
   @Input() public initialOpen: boolean;
-  @Input() public initialMode: DrawerMode = "responsive";
+  @Input() public initialMode: DrawerMode = 'responsive';
 
   constructor(private service: DrawerService, private ctrl: DrawerController) {}
 

@@ -14,7 +14,7 @@ describe('DrawerService', () => {
   );
 
   it('should be created', () => {
-    const service: DrawerServiceImpl = TestBed.get(DrawerServiceImpl);
+    const service: DrawerServiceImpl = TestBed.inject(DrawerServiceImpl);
     expect(service).toBeTruthy();
   });
 });

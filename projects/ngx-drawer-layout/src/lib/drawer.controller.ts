@@ -28,7 +28,7 @@ export interface DrawerOptions {
 class DrawerModeController {
   private _mode = new BehaviorSubject<DrawerMode>(null);
   private _matMode = new BehaviorSubject<MatDrawerMode>(null);
-  private _unregisterHandler: Function;
+  private _unregisterHandler: () => void;
 
   public readonly mode$ = this._mode
     .asObservable()
@@ -62,7 +62,7 @@ class DrawerModeController {
         'window',
         'resize',
         this._onResize
-      );
+      ) as () => void;
     }
   }
 }

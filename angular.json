@@ -32,6 +32,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/ngx-drawer-layout/",
               "fileReplacements": [
                 {
                   "replace": "projects/demo-app/src/environments/environment.ts",

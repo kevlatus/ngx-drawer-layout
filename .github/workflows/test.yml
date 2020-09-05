@@ -1,0 +1,33 @@
+name: Test
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+
+      - uses: actions/cache@v2
+        name: retrieve npm cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+
+      - name: run linter
+        run: npm run lint
+
+      - name: run library tests
+        run: npm run test
+
+      - name: build library
+        run: npm run build -- --prod
+
+#      - name: run demo tests
+#        run: npm run test:demo

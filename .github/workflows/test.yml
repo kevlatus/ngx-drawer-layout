@@ -29,5 +29,5 @@ jobs:
       - name: run library tests
         run: npm run test
 
-#      - name: run demo tests
-#        run: npm run test:demo
+      - name: run demo tests
+        run: npm run test:demo

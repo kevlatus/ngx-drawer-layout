@@ -7,6 +7,8 @@ This library provides [Angular](https://angular.io/) components for implementing
 [Material Design Drawer](https://material.io/design/components/navigation-drawer.html).
 It relies on the [Angular Material Library](https://material.angular.io/).
 
+Check out [this demo](https://kevlatus.github.io/ngx-drawer-layout/) to see it in action.
+
 ## Installing
 
 Before installing, make sure to add Angular Material to your project. When using Angular CLI, you can run:

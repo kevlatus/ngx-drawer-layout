@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 /**
  * This interface defines the properties, which are needed by {@link DrawerNavListComponent} to render

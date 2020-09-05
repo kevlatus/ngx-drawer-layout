@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -28,18 +28,20 @@ describe('DrawerConfigFormComponent', () => {
   let component: DrawerConfigFormComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [DrawerConfigFormComponent, TestComponent],
-      imports: [
-        BrowserAnimationsModule,
-        DrawerLayoutModule,
-        FormsModule,
-        MatButtonToggleModule,
-        MatSlideToggleModule,
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [DrawerConfigFormComponent, TestComponent],
+        imports: [
+          BrowserAnimationsModule,
+          DrawerLayoutModule,
+          FormsModule,
+          MatButtonToggleModule,
+          MatSlideToggleModule,
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -24,22 +24,24 @@ describe('DrawerNavListComponent', () => {
   let component: DrawerNavListComponent;
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        DrawerNavItemComponent,
-        DrawerNavListComponent,
-        TestComponent,
-      ],
-      imports: [
-        BrowserAnimationsModule,
-        DrawerLayoutModule,
-        MatIconModule,
-        RouterTestingModule,
-      ],
-      providers: [],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          DrawerNavItemComponent,
+          DrawerNavListComponent,
+          TestComponent,
+        ],
+        imports: [
+          BrowserAnimationsModule,
+          DrawerLayoutModule,
+          MatIconModule,
+          RouterTestingModule,
+        ],
+        providers: [],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);

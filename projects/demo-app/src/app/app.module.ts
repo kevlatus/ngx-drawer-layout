@@ -47,12 +47,12 @@ export class AppModule {
   constructor(matIconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     matIconRegistry.addSvgIcon(
       'github',
-      sanitizer.bypassSecurityTrustResourceUrl('/assets/ic-github.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/ic-github.svg')
     );
 
     matIconRegistry.addSvgIcon(
       'npm',
-      sanitizer.bypassSecurityTrustResourceUrl('/assets/ic-npm.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/ic-npm.svg')
     );
   }
 }

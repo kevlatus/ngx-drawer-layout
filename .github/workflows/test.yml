@@ -3,10 +3,12 @@ on:
   push:
     branches:
       - v*
+      - demo
 
   pull_request:
     branches:
       - main
+      - demo
       - v*
 
 jobs:

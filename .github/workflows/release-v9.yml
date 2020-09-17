@@ -1,4 +1,4 @@
-name: Publish v9
+name: Release v9
 on:
   push:
     tags:

@@ -1,4 +1,4 @@
-name: Publish v10
+name: Release latest (v10)
 on:
   push:
     tags:

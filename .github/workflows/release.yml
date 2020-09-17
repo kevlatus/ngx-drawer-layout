@@ -10,7 +10,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
+
+      - uses: actions/setup-node@master
+        with:
+          registry-url: 'https://registry.npmjs.org/'
 
       - run: npm install
 
@@ -21,7 +24,7 @@ jobs:
         run: npm run build -- --prod
 
       - name: run library tests
-        run: npm run test
+        run: npm run test -- --coverage
 
       - name: run demo tests
         run: npm run test:demo
@@ -31,9 +34,10 @@ jobs:
           cp LICENSE dist/ngx-drawer-layout
           cp README.md dist/ngx-drawer-layout
 
-      - uses: actions/setup-node@master
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@master
         with:
-          registry-url: 'https://registry.npmjs.org/'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: publish to npm
         working-directory: ./dist/ngx-drawer-layout

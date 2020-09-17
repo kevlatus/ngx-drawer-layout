@@ -12,14 +12,6 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
 
-      - uses: actions/cache@v2
-        name: retrieve npm cache
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - run: npm install
 
       - name: run linter

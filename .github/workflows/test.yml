@@ -1,19 +1,13 @@
-name: Test
-on:
-  push:
-    branches:
-      - v*
-      - demo
-
-  pull_request:
-    branches:
-      - main
-      - demo
-      - v*
+name: Lint & Test
+on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@master

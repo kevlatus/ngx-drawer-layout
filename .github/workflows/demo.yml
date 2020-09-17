@@ -14,17 +14,8 @@ jobs:
 
       - run: npm install
 
-      - name: run linter
-        run: npm run lint
-
       - name: build library
         run: npm run build -- --prod
-
-      - name: run library tests
-        run: npm run test
-
-      - name: run demo tests
-        run: npm run test:demo
 
       - name: build demo
         run: npm run build -- --prod --project=demo-app

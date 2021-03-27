@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { DrawerController } from './drawer.controller';
@@ -31,7 +31,7 @@ export abstract class DrawerService implements DrawerController {
  * Service for controlling the state of the {@link DrawerLayoutComponent} used by
  * this application.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DrawerServiceImpl implements DrawerService {
   private readonly _drawers: { [key in DrawerPosition]: DrawerController } = {
     start: null,
@@ -40,6 +40,14 @@ export class DrawerServiceImpl implements DrawerService {
 
   private _getDefaultDrawer(): DrawerController {
     return this.getDrawer('start');
+  }
+
+  constructor(@Optional() @SkipSelf() self?: DrawerService) {
+    if (self) {
+      console.warn(
+        'More than one DrawerService instance was provided. Consider using only one drawer layout.'
+      );
+    }
   }
 
   public registerDrawer(

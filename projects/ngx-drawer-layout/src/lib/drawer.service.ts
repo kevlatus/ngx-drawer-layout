@@ -31,9 +31,7 @@ export abstract class DrawerService implements DrawerController {
  * Service for controlling the state of the {@link DrawerLayoutComponent} used by
  * this application.
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DrawerServiceImpl implements DrawerService {
   private readonly _drawers: { [key in DrawerPosition]: DrawerController } = {
     start: null,

@@ -7,7 +7,6 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 import { take, tap, filter } from 'rxjs/operators';
 
 import { drawerPositions } from '../drawer.models';

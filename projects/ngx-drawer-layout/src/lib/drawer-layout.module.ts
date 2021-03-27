@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { DrawerToggleDirective } from './drawer-toggle.directive';
 import { DrawerLayoutComponent } from './drawer-layout/drawer-layout.component';
 import { DrawerDirective } from './drawer.directive';
+import { DrawerService, DrawerServiceImpl } from './drawer.service';
 
 export function windowFactory(platformId: {}) {
   if (isPlatformBrowser(platformId)) {
@@ -18,6 +19,7 @@ export function windowFactory(platformId: {}) {
   imports: [CommonModule, MatSidenavModule, RouterModule],
   exports: [DrawerToggleDirective, DrawerLayoutComponent, DrawerDirective],
   providers: [
+    { provide: DrawerService, useClass: DrawerServiceImpl },
     { provide: 'window', useFactory: windowFactory, deps: [PLATFORM_ID] },
   ],
 })

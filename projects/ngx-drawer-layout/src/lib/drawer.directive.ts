@@ -1,39 +1,43 @@
 import { Directive, Input, OnInit } from '@angular/core';
 
-import { DrawerController, DrawerControllerImpl } from './drawer.controller';
 import { DrawerMode, DrawerPosition } from './drawer.models';
-import { DrawerService, DrawerServiceImpl } from './drawer.service';
+import { DrawerService } from './drawer.service';
 
 @Directive({
   selector: '[ngxDrawer]',
-  providers: [{ provide: DrawerController, useClass: DrawerControllerImpl }],
   exportAs: 'ngxDrawer',
 })
 export class DrawerDirective implements OnInit {
-  private get _position(): DrawerPosition {
-    return this.position || 'start';
+  private _position: DrawerPosition;
+
+  @Input('ngxDrawer')
+  public get position(): DrawerPosition {
+    return this._position || 'start';
   }
 
-  @Input('ngxDrawer') public position: DrawerPosition;
-  @Input() public initialDisabled: boolean;
-  @Input() public initialOpen: boolean;
+  public set position(val: DrawerPosition) {
+    this._position = val;
+  }
+
+  @Input() public initialDisabled: boolean = false;
+  @Input() public initialOpen: boolean = false;
   @Input() public initialMode: DrawerMode = 'responsive';
 
-  constructor(
-    private service: DrawerService,
-    public readonly controller: DrawerController
-  ) {}
+  constructor(public readonly service: DrawerService) {}
 
   ngOnInit(): void {
-    (this.controller as DrawerControllerImpl).init({
-      disabled: this.initialDisabled !== undefined,
-      open: this.initialOpen !== undefined,
-      mode: this.initialMode,
-    });
+    if (this.initialDisabled === false) {
+      this.service.getDrawer(this.position).enable();
+    } else {
+      this.service.getDrawer(this.position).disable();
+    }
 
-    (this.service as DrawerServiceImpl).registerDrawer(
-      this._position,
-      this.controller
-    );
+    if (this.initialOpen === false) {
+      this.service.getDrawer(this.position).close();
+    } else {
+      this.service.getDrawer(this.position).open();
+    }
+
+    this.service.getDrawer(this.position).setMode(this.initialMode);
   }
 }

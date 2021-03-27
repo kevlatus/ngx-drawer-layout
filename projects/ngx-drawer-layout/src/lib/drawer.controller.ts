@@ -17,6 +17,7 @@ export abstract class DrawerController {
   abstract enable(open?: boolean): void;
   abstract disable(): void;
   abstract setMode(mode: DrawerMode): void;
+  abstract dispose(): void;
 }
 
 export interface DrawerOptions {
@@ -67,8 +68,7 @@ class DrawerModeController {
   }
 }
 
-@Injectable()
-export class DrawerControllerImpl implements DrawerController, OnDestroy {
+export class DrawerControllerImpl implements DrawerController {
   private readonly _destroy$ = new Subject();
   private readonly _isDisabled = new BehaviorSubject<boolean>(null);
   private readonly _isOpen = new BehaviorSubject<boolean>(null);
@@ -88,9 +88,9 @@ export class DrawerControllerImpl implements DrawerController, OnDestroy {
   /**
    * Returns an observable, which fires, when the drawer is en-/disabled.
    */
-  public readonly isDisabled$: Observable<
-    boolean
-  > = this._isDisabled.asObservable().pipe(distinctUntilChanged());
+  public readonly isDisabled$: Observable<boolean> = this._isDisabled
+    .asObservable()
+    .pipe(distinctUntilChanged());
 
   public readonly mode$: Observable<DrawerMode>;
   public readonly matMode$: Observable<MatDrawerMode>;
@@ -101,16 +101,13 @@ export class DrawerControllerImpl implements DrawerController, OnDestroy {
     this.setMode(mode);
   }
 
-  constructor(
-    @Inject('window') private window: any,
-    private eventManager: EventManager
-  ) {
+  constructor(private window: Window, private eventManager: EventManager) {
     this._modeCtrl = new DrawerModeController(window, eventManager);
     this.mode$ = this._modeCtrl.mode$;
     this.matMode$ = this._modeCtrl.matMode$;
   }
 
-  ngOnDestroy(): void {
+  dispose(): void {
     this._destroy$.next();
   }
 

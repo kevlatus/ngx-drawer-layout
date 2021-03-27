@@ -1,6 +1,6 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { DrawerController, DrawerService } from 'ngx-drawer-layout';
+import { DrawerDirective, DrawerService } from 'ngx-drawer-layout';
 
 import { DrawerNavItem } from '../drawer-nav-item/drawer-nav-item.component';
 
@@ -18,15 +18,15 @@ export class DrawerNavListComponent {
   @Input() public items: DrawerNavItem[] = [];
 
   constructor(
-    private elementRef: ElementRef<HTMLElement>,
     private service: DrawerService,
-    private drawerController: DrawerController
+    @Optional() private drawer?: DrawerDirective
   ) {}
 
   onItemClicked() {
-    this.drawerController.mode$.pipe(take(1)).subscribe((mode) => {
+    const drawer = this.service.getDrawer(this.drawer?.position || 'start');
+    drawer.mode$.pipe(take(1)).subscribe((mode) => {
       if (mode === 'over') {
-        this.drawerController.close();
+        drawer.close();
       }
     });
   }

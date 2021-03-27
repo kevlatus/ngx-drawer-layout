@@ -1,10 +1,17 @@
-import { Injectable, Optional, SkipSelf } from '@angular/core';
+import {
+  Inject,
+  Injectable,
+  OnDestroy,
+  Optional,
+  SkipSelf,
+} from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
-import { DrawerController } from './drawer.controller';
+import { DrawerController, DrawerControllerImpl } from './drawer.controller';
 import { DrawerMode, DrawerPosition, MatDrawerMode } from './drawer.models';
 
-export abstract class DrawerService implements DrawerController {
+export abstract class DrawerService {
   abstract readonly isDisabled$: Observable<boolean>;
   abstract readonly isOpen$: Observable<boolean>;
   abstract readonly mode$: Observable<DrawerMode>;
@@ -32,32 +39,33 @@ export abstract class DrawerService implements DrawerController {
  * this application.
  */
 @Injectable({ providedIn: 'root' })
-export class DrawerServiceImpl implements DrawerService {
-  private readonly _drawers: { [key in DrawerPosition]: DrawerController } = {
-    start: null,
-    end: null,
-  };
+export class DrawerServiceImpl implements DrawerService, OnDestroy {
+  private readonly _drawers: { [key in DrawerPosition]: DrawerController };
 
-  private _getDefaultDrawer(): DrawerController {
-    return this.getDrawer('start');
-  }
-
-  constructor(@Optional() @SkipSelf() self?: DrawerService) {
+  constructor(
+    @Inject('window') window: any,
+    eventManager: EventManager,
+    @Optional() @SkipSelf() self?: DrawerService
+  ) {
     if (self) {
       console.warn(
         'More than one DrawerService instance was provided. Consider using only one drawer layout.'
       );
     }
+
+    this._drawers = {
+      start: new DrawerControllerImpl(window, eventManager),
+      end: new DrawerControllerImpl(window, eventManager),
+    };
   }
 
-  public registerDrawer(
-    position: DrawerPosition,
-    ctrl: DrawerController
-  ): void {
-    this._drawers[position] = ctrl;
+  ngOnDestroy(): void {
+    for (const ctrl of Object.values(this._drawers)) {
+      ctrl.dispose();
+    }
   }
 
-  public getDrawer(position: DrawerPosition): DrawerController {
+  public getDrawer(position: DrawerPosition = 'start'): DrawerController {
     return this._drawers[position];
   }
 
@@ -69,43 +77,43 @@ export class DrawerServiceImpl implements DrawerService {
    * Returns an observable, which fires when the opened state of the drawer changes.
    */
   public get isOpen$(): Observable<boolean> {
-    return this._getDefaultDrawer().isOpen$;
+    return this.getDrawer().isOpen$;
   }
 
   /**
    * Returns an observable, which fires, when the drawer is en-/disabled.
    */
   public get isDisabled$(): Observable<boolean> {
-    return this._getDefaultDrawer().isDisabled$;
+    return this.getDrawer().isDisabled$;
   }
 
   public get mode$(): Observable<DrawerMode> {
-    return this._getDefaultDrawer().mode$;
+    return this.getDrawer().mode$;
   }
 
   public get matMode$(): Observable<MatDrawerMode> {
-    return this._getDefaultDrawer().matMode$;
+    return this.getDrawer().matMode$;
   }
 
   /**
    * Opens the drawer.
    */
   public open(): void {
-    this._getDefaultDrawer().open();
+    this.getDrawer().open();
   }
 
   /**
    * Closes the drawer.
    */
   public close(): void {
-    this._getDefaultDrawer().close();
+    this.getDrawer().close();
   }
 
   /**
    * Inverts the opened state of the drawer.
    */
   public toggle(): void {
-    this._getDefaultDrawer().toggle();
+    this.getDrawer().toggle();
   }
 
   /**
@@ -113,17 +121,17 @@ export class DrawerServiceImpl implements DrawerService {
    * @param open If true, the drawer is opened after activation.
    */
   public enable(open?: boolean): void {
-    this._getDefaultDrawer().enable(open);
+    this.getDrawer().enable(open);
   }
 
   /**
    * Disables the drawer and closes it.
    */
   public disable(): void {
-    this._getDefaultDrawer().disable();
+    this.getDrawer().disable();
   }
 
   public setMode(mode: DrawerMode) {
-    this._getDefaultDrawer().setMode(mode);
+    this.getDrawer().setMode(mode);
   }
 }

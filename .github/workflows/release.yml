@@ -1,8 +1,8 @@
 name: Deploy to npm
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - releases/v*
 
 jobs:
   publish:
@@ -12,8 +12,6 @@ jobs:
       - uses: actions/checkout@master
 
       - uses: actions/setup-node@master
-        with:
-          registry-url: 'https://registry.npmjs.org/'
 
       - run: npm install
 

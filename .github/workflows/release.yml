@@ -1,8 +1,8 @@
-name: Release latest (v10)
+name: Deploy to npm
 on:
   push:
     tags:
-      - v10*
+      - v*
 
 jobs:
   publish:

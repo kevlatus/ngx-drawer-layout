@@ -23,12 +23,6 @@ import { DrawerService, DrawerServiceImpl } from '../drawer.service';
   selector: 'ngx-drawer-layout',
   templateUrl: './drawer-layout.component.html',
   styleUrls: ['./drawer-layout.component.scss'],
-  providers: [
-    {
-      provide: DrawerService,
-      useClass: DrawerServiceImpl,
-    },
-  ],
 })
 export class DrawerLayoutComponent implements OnInit {
   @ViewChild('header', { static: true })
